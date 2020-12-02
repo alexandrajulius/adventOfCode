@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace Tests\unit;
 
 use Generator;
-use Expenses;
+use DayOne;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-final class ExpensesTest extends TestCase
+final class DayOneTest extends TestCase
 {
+    //Expenses
     public function testCanBeInstantiated(): void
     {
-        Assert::assertInstanceOf(Expenses::class, new Expenses());
+        Assert::assertInstanceOf(DayOne::class, new DayOne());
     }
 
     /**
@@ -21,7 +22,7 @@ final class ExpensesTest extends TestCase
      */
     public function testFindsExpensesForThreeProducts(int $result, array $expenses, int $expectedSum): void
     {
-        $actualFuel = (new Expenses())->findProductOfThree($result, $expenses);
+        $actualFuel = (new DayOne())->findProductOfThree($result, $expenses);
 
         self::assertEquals($expectedSum, $actualFuel);
     }
@@ -46,7 +47,7 @@ final class ExpensesTest extends TestCase
      */
     public function testFindsExpensesForTwoProducts(int $result, array $expenses, int $expectedSum): void
     {
-        $actualFuel = (new Expenses())->findProductOfTwo($result, $expenses);
+        $actualFuel = (new DayOne())->findProductOfTwo($result, $expenses);
 
         self::assertEquals($expectedSum, $actualFuel);
     }

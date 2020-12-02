@@ -4,7 +4,7 @@
 Because this is what we do in December
 
 ## How to run
-dependencies:
+Dependencies:
 
 * [PHP 7.2+](http://php.net/downloads.php)
 * [composer](https://getcomposer.org/)

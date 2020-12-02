@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-final class PasswordPhilosophy
+final class DayTwo
 {
+    // PasswordPhilosophy
     public function getAmountOfValidPasswords(array $passwordList): int
     {
         $count = 0;

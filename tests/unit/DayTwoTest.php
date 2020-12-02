@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Tests\unit;
 
 use Generator;
-use PasswordPhilosophy;
+use DayTwo;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-final class PasswordPhilosophyTest extends TestCase
+final class DayTwoTest extends TestCase
 {
     public function testCanBeInstantiated(): void
     {
-        Assert::assertInstanceOf(PasswordPhilosophy::class, new PasswordPhilosophy());
+        Assert::assertInstanceOf(DayTwo::class, new DayTwo());
     }
 
     /**
@@ -21,7 +21,7 @@ final class PasswordPhilosophyTest extends TestCase
      */
     public function testGetsAmountOfValidPasswords(array $passwordList, int $expected): void
     {
-        $actual = (new PasswordPhilosophy())->getAmountOfValidPasswords($passwordList);
+        $actual = (new DayTwo())->getAmountOfValidPasswords($passwordList);
 
         self::assertEquals($expected, $actual);
     }
@@ -49,7 +49,7 @@ final class PasswordPhilosophyTest extends TestCase
      */
     public function testValidatesPasswordsConsideringPositions(string $password, bool $expected): void
     {
-        $actual = (new PasswordPhilosophy())->isValidPasswordConsideringPosition($password);
+        $actual = (new DayTwo())->isValidPasswordConsideringPosition($password);
 
         self::assertEquals($expected, $actual);
     }
@@ -87,7 +87,7 @@ final class PasswordPhilosophyTest extends TestCase
      */
     public function testValidatesPasswords(string $password, bool $expected): void
     {
-        $actual = (new PasswordPhilosophy())->isValidPassword($password);
+        $actual = (new DayTwo())->isValidPassword($password);
 
         self::assertEquals($expected, $actual);
     }
