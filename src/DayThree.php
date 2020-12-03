@@ -19,7 +19,7 @@ final class DayThree
             * $rightOneDownTwo;
     }
 
-    public function getAmountOfTrees(int $steps, array $treeGrid): int
+    public function getAmountOfTrees(int $stepsToTheRight, array $treeGrid): int
     {
         $count = 0;
         $index = 0;
@@ -28,7 +28,7 @@ final class DayThree
 
             $tree = ($indexedGrid[$index] == '#') ? 1 : 0;
             $count = $count + $tree;
-            $index = (($index + $steps) % count($indexedGrid));
+            $index = (($index + $stepsToTheRight) % count($indexedGrid));
         }
 
         return $count;
