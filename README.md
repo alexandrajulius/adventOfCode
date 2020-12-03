@@ -1,5 +1,5 @@
 # Advent of Code 2020
-## [https://adventofcode.com/2020](https://adventofcode.com/2020)
+## [https://adventofcode.com/2020](https://adventofcode.com/2020) :christmas_tree:
 
 Because this is what we do in December
 
