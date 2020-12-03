@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Tests\unit;
 
 use Generator;
-use DayThree;
+use Day03;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-final class DayThreeTest extends TestCase
+final class Day03Test extends TestCase
 {
     // Tree Grid
     public function testCanBeInstantiated(): void
     {
-        Assert::assertInstanceOf(DayThree::class, new DayThree());
+        Assert::assertInstanceOf(Day03::class, new Day03());
     }
 
     /**
@@ -22,7 +22,7 @@ final class DayThreeTest extends TestCase
      */
     public function testFindsAmountOfTrees(int $stepsToTheRight, array $treeGrid, int $expected): void
     {
-        $actual = (new DayThree())->getAmountOfTrees($stepsToTheRight, $treeGrid);
+        $actual = (new Day03())->getAmountOfTrees($stepsToTheRight, $treeGrid);
 
         self::assertEquals($expected, $actual);
     }
@@ -70,7 +70,7 @@ final class DayThreeTest extends TestCase
      */
     public function testFindsAmountOfTreesWithDifferentTraversals(array $treeGrid, int $expected): void
     {
-        $actual = (new DayThree())->getProductOfDifferentTraversals($treeGrid);
+        $actual = (new Day03())->getProductOfDifferentTraversals($treeGrid);
 
         self::assertEquals($expected, $actual);
     }

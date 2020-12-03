@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Tests\unit;
 
 use Generator;
-use DayTwo;
+use Day02;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-final class DayTwoTest extends TestCase
+final class Day02Test extends TestCase
 {
     public function testCanBeInstantiated(): void
     {
-        Assert::assertInstanceOf(DayTwo::class, new DayTwo());
+        Assert::assertInstanceOf(Day02::class, new Day02());
     }
 
     /**
@@ -21,7 +21,7 @@ final class DayTwoTest extends TestCase
      */
     public function testGetsAmountOfValidPasswords(array $passwordList, int $expected): void
     {
-        $actual = (new DayTwo())->getAmountOfValidPasswords($passwordList);
+        $actual = (new Day02())->getAmountOfValidPasswords($passwordList);
 
         self::assertEquals($expected, $actual);
     }
@@ -49,7 +49,7 @@ final class DayTwoTest extends TestCase
      */
     public function testValidatesPasswordsConsideringPositions(string $password, bool $expected): void
     {
-        $actual = (new DayTwo())->isValidPasswordConsideringPosition($password);
+        $actual = (new Day02())->isValidPasswordConsideringPosition($password);
 
         self::assertEquals($expected, $actual);
     }
@@ -87,7 +87,7 @@ final class DayTwoTest extends TestCase
      */
     public function testValidatesPasswords(string $password, bool $expected): void
     {
-        $actual = (new DayTwo())->isValidPassword($password);
+        $actual = (new Day02())->isValidPassword($password);
 
         self::assertEquals($expected, $actual);
     }

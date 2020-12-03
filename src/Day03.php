@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-final class DayThree
+final class Day03
 {
     public function getProductOfDifferentTraversals(array $treeGrid): int
     {

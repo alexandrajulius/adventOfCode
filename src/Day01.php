@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-final class DayOne
+final class Day01
 {
     // Expenses
     public function findProductOfThree(int $result, array $expenses): int
