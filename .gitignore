@@ -1,4 +1,2 @@
 .idea
 .phpunit.result.cache
-vendor
-composer.phar

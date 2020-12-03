@@ -65,7 +65,6 @@ final class DayThreeTest extends TestCase
         ];
     }
 
-
     /**
      * @dataProvider provideTreeGridDataForDifferentTraversals
      */

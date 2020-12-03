@@ -29,10 +29,6 @@ final class DayThree
             $tree = ($indexedGrid[$index] == '#') ? 1 : 0;
             $count = $count + $tree;
             $index = (($index + $steps) % count($indexedGrid));
-
-            // 6  / 31 = 0 rest 6
-            // 30 / 31 = 0 rest 30
-            // 33 / 31 = 1 rest 2
         }
 
         return $count;
