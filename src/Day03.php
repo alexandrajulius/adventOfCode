@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 final class Day03
 {
+    // Tree Traversal
     public function getProductOfDifferentTraversals(array $treeGrid): int
     {
         $rightOneDownOne = $this->getAmountOfTrees(1, $treeGrid);

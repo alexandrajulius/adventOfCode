@@ -4,7 +4,39 @@ declare(strict_types=1);
 
 final class Day04
 {
+    // Passport Validation
     private const CID = 'cid';
+
+    private $passportValueValidator;
+
+    public function __construct(Day04PassportValueValidator $passportValueValidator)
+    {
+        $this->passportValueValidator = $passportValueValidator;
+    }
+
+    public function getAmountOfValidPassportsIncludingValues(string $rawPassports): int
+    {
+        $passports = $this->convertInputData($rawPassports);
+        $count = 0;
+
+        foreach ($passports as $passport) {
+            $fields = explode(' ', $passport[0]);
+            $validationInput = [];
+            foreach ($fields as $field) {
+                $field = explode(':', $field);
+                if ($field[0] !== self::CID) {
+                    $validationInput[$field[0]] = $field[1];
+                }
+            }
+            if ($this->isValidPassportKeys($validationInput)) {
+                if ($this->passportValueValidator->isValidPassportValues($validationInput)) {
+                    $count++;
+                }
+            }
+        }
+
+        return $count;
+    }
 
     public function getAmountOfValidPassports(string $rawPassports): int
     {
@@ -13,16 +45,16 @@ final class Day04
 
         foreach ($passports as $passport) {
             $fields = explode(' ', $passport[0]);
-
             $validationInput = [];
-
             foreach ($fields as $field) {
                 $field = explode(':', $field);
                 if ($field[0] !== self::CID) {
                     $validationInput[$field[0]] = $field[1];
                 }
             }
-            $count = ($this->isValidPassport($validationInput)) == true ? ($count + 1) : $count;
+            if ($this->isValidPassportKeys($validationInput)) {
+                $count++;
+            }
         }
 
         return $count;
@@ -40,7 +72,7 @@ final class Day04
         return $output;
     }
 
-    public function isValidPassport(array $passportInput): bool
+    public function isValidPassportKeys(array $passportInput): bool
     {
         $preSortedFields = ['byr', 'ecl', 'eyr', 'hcl', 'hgt', 'iyr', 'pid'];
 
@@ -49,4 +81,5 @@ final class Day04
 
         return $preSortedFields === $passportFields;
     }
+
 }
