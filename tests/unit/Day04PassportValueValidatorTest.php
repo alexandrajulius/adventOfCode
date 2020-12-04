@@ -192,5 +192,4 @@ final class Day04PassportValueValidatorTest extends TestCase
             'result' => false
         ];
     }
-
 }

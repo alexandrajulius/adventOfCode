@@ -1223,7 +1223,6 @@ hgt:183cm cid:187 byr:2019 ecl:xry iyr:2013 pid:164cm hcl:#18171d eyr:2021',
                 ];
     }
 
-
     /**
      * @dataProvider providePassportDataIncludingValues
      */
