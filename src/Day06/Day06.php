@@ -6,18 +6,19 @@ namespace Day06;
 
 final class Day06
 {
-    public function getAmountOfCommonAnswers(string $rawInput): int
+    // Customs Declaration
+    public function getAmountOfCommonYesAnswers(string $rawInput): int
     {
         $allGroupsAnswers = $this->convertInput($rawInput);
-        $allUniqueYesAnswers = [];
+        $allCommonYesAnswers = [];
         foreach ($allGroupsAnswers as $groupsAnswers) {
-            $allUniqueYesAnswers[] = $this->getAmountOfCommonYesAnswersPerGroup($groupsAnswers);
+            $allCommonYesAnswers[] = $this->getAmountOfCommonYesAnswersPerGroup($groupsAnswers);
         }
 
-        return array_sum($allUniqueYesAnswers);
+        return array_sum($allCommonYesAnswers);
     }
 
-    public function getAmountOfAnswers(string $rawInput): int
+    public function getAmountOfYesAnswers(string $rawInput): int
     {
         $allGroupsAnswers = $this->convertInput($rawInput);
         $allYesAnswers = [];

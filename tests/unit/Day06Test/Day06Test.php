@@ -60,7 +60,7 @@ final class Day06Test extends TestCase
      */
     public function testGetsAmountOfUniqueAnswers(string $input, int $expected): void
     {
-        $actual = (new Day06())->getAmountOfCommonAnswers($input);
+        $actual = (new Day06())->getAmountOfCommonYesAnswers($input);
 
         self::assertEquals($expected, $actual);
     }
@@ -97,7 +97,7 @@ b',
      */
     public function testGetsAmountOfAnswers(string $input, int $expected): void
     {
-        $actual = (new Day06())->getAmountOfAnswers($input);
+        $actual = (new Day06())->getAmountOfYesAnswers($input);
 
         self::assertEquals($expected, $actual);
     }
