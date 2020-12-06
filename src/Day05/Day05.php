@@ -22,7 +22,6 @@ final class Day05
         return $mySeatId;
     }
 
-
     public function findHighestSeatId(string $rawInput): int
     {
         $seats = $this->findAllSeatIds($rawInput);

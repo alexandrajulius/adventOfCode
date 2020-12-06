@@ -86,7 +86,7 @@ b',
             'result' => 6
         ];
 
-        yield 'For answers b' => [
+        yield 'For answers final' => [
             'input' => file_get_contents('./tests/fixtures/day06.txt'),
             'result' => 3235
         ];
@@ -123,7 +123,7 @@ b',
             'result' => 11
         ];
 
-        yield 'For answers b' => [
+        yield 'For answers final' => [
             'input' => file_get_contents('./tests/fixtures/day06.txt'),
             'result' => 6587
         ];
