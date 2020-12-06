@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Day04;
+
 final class Day04
 {
     // Passport Validation

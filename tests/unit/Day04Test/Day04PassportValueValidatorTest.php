@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\unit;
+namespace Tests\unit\Day04Test;
+
+use Day04\Day04PassportValueValidator;
 use Generator;
-use Day04PassportValueValidator;
 use PHPUnit\Framework\TestCase;
 
 final class Day04PassportValueValidatorTest extends TestCase
