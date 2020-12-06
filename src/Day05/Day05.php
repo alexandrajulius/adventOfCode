@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Day05;
+
 final class Day05
 {
     // Boarding Passes

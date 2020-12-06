@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Day03;
+
 final class Day03
 {
     // Tree Traversal

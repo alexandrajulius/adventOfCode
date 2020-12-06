@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Day02;
+
 final class Day02
 {
     // PasswordPhilosophy

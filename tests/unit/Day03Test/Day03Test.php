@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\unit;
+namespace Tests\unit\Day03Test;
 
+use Day03\Day03;
 use Generator;
-use Day03;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 

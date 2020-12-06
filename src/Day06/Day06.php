@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Day06;
+
 final class Day06
 {
     public function getAmountOfCommonAnswers(string $rawInput): int

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Day01;
+
 final class Day01
 {
     // Expenses
