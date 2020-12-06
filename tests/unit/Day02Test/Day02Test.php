@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class Day02Test extends TestCase
 {
+    // PasswordPhilosophy
     public function testCanBeInstantiated(): void
     {
         Assert::assertInstanceOf(Day02::class, new Day02());

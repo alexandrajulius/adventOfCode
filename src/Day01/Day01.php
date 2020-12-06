@@ -6,15 +6,17 @@ namespace Day01;
 
 final class Day01
 {
+    private const CURRENT_YEAR = 2020;
+
     // Expenses
-    public function findProductOfThree(int $result, array $expenses): int
+    public function findProductOfThree(array $expenses): int
     {
         $output = 0;
 
         for ($i = 0; $i < count($expenses); $i++) {
             for ($j = 0; $j < count($expenses); $j++) {
-                $tempResult = $result - $expenses[$i] - $expenses[$j];
-                if ($expenses[$i] + $expenses[$j] < $result) {
+                $tempResult = self::CURRENT_YEAR - $expenses[$i] - $expenses[$j];
+                if ($expenses[$i] + $expenses[$j] < self::CURRENT_YEAR) {
                     if (in_array($tempResult, $expenses)) {
                         return $expenses[$i] * $expenses[$j] * $tempResult;
                     }
@@ -25,11 +27,11 @@ final class Day01
         return $output;
     }
 
-    public function findProductOfTwo(int $result, array $expenses): int
+    public function findProductOfTwo(array $expenses): int
     {
         $output = 0;
         for ($i = 0; $i < count($expenses); $i++) {
-            $tempResult = $result - $expenses[$i];
+            $tempResult = self::CURRENT_YEAR - $expenses[$i];
             if (in_array($tempResult, $expenses)) {
                 return $expenses[$i] * $tempResult;
             }
