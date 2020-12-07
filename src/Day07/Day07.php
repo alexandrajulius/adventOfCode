@@ -6,6 +6,7 @@ namespace Day07;
 
 final class Day07
 {
+    // Bag procession
     public function getAmountOfContainedBags(string $rawInput, array $bag): int
     {
         $allRules = $this->convertInput($rawInput);

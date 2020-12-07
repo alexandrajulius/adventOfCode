@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class Day07Test extends TestCase
 {
+    // Bag procession
     public function testCanBeInstantiated(): void
     {
         Assert::assertInstanceOf(Day07::class, new Day07());
