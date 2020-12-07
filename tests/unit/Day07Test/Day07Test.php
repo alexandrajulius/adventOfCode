@@ -81,7 +81,6 @@ dotted black bags contain no other bags.',
             'result' => 32
         ];
 
-
         yield 'For rules b' => [
             'input' => 'shiny gold bags contain 2 dark red bags.
 dark red bags contain 2 dark orange bags.
@@ -98,7 +97,6 @@ dark violet bags contain no other bags.',
             'result' => 126
         ];
 
-
         yield 'For rules final' => [
             'input' => file_get_contents('./tests/fixtures/day07.txt'),
             'bag' =>  [
@@ -112,9 +110,9 @@ dark violet bags contain no other bags.',
     /**
      * @dataProvider provideTraversableForContainedBags
      */
-    public function testTraverseRulesToGetContainedBags(array $rules, array $bag, int $countBags, array $stack, array $expected): void
+    public function testTraverseRulesToGetContainedBags(array $rules, array $bag, array $stack, array $expected): void
     {
-        $actual = (new Day07())->traverseRulesToGetContainedBags($rules, $bag, $countBags, $stack);
+        $actual = (new Day07())->traverseRulesToGetContainedBags($rules, $bag, $stack);
 
         self::assertEquals($expected, $actual);
     }
@@ -162,7 +160,6 @@ dark violet bags contain no other bags.',
                 'bag' => 'shiny gold',
                 'resultCount' => [],
             ],
-            'countBags' => 1,
             'stack' => [],
             'result' => [
                 [

@@ -10,7 +10,7 @@ final class Day07
     {
         $allRules = $this->convertInput($rawInput);
 
-        $results = $this->traverseRulesToGetContainedBags($allRules, $bag, 1, []);
+        $results = $this->traverseRulesToGetContainedBags($allRules, $bag, []);
 
         $products = [];
         foreach ($results as $result) {
@@ -20,10 +20,9 @@ final class Day07
         return array_sum($products);
     }
 
-    public function traverseRulesToGetContainedBags(array $allRules, array $bag, int $countBags, array $stack): array
+    public function traverseRulesToGetContainedBags(array $allRules, array $bag, array $stack): array
     {
         $resultBags = [];
-
         array_push($stack, $bag['count']);
 
         foreach ($allRules as $leftSide => $rightSides) {
@@ -37,7 +36,7 @@ final class Day07
                         ];
                         array_push($tempResultBag['resultCount'], (int)substr($rightSide, 0, 1));
                         $resultBags[] = $tempResultBag;
-                        $nextTraversalResults = $this->traverseRulesToGetContainedBags($allRules, $tempResultBag, $countBags, $stack);
+                        $nextTraversalResults = $this->traverseRulesToGetContainedBags($allRules, $tempResultBag, $stack);
 
                         foreach ($nextTraversalResults as $tempResult) {
                             array_push($tempResultBag['resultCount'], $tempResult['count']);
