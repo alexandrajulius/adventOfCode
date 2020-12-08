@@ -18,6 +18,37 @@ final class Day08Test extends TestCase
     }
 
     /**
+     * @dataProvider provideInstructionsToFix
+     */
+    public function testGetsLastAccValueFromFixedInstructions(string $instructions, int $expected): void
+    {
+        $actual = (new Day08())->getLastAccValueFromFixedInstructions($instructions);
+
+        self::assertEquals($expected, $actual);
+    }
+
+    public function provideInstructionsToFix(): Generator
+    {
+        yield 'For instructions a' => [
+            'instructions' => 'nop +0
+acc +1
+jmp +4
+acc +3
+jmp -3
+acc -99
+acc +1
+jmp -4
+acc +6',
+            'lastAccValue' => 8
+        ];
+
+        yield 'For instructions final' => [
+            'instructions' => file_get_contents('./tests/fixtures/day08.txt'),
+            'lastAccValue' => 1160
+        ];
+    }
+
+    /**
      * @dataProvider provideInstructions
      */
     public function testGetsLastAccValue(string $instructions, int $expected): void
