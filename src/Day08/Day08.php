@@ -13,22 +13,22 @@ final class Day08
 
         $result = $this->getMemorizedRun($instructions);
 
-        $bla = [];
+        $newTry = [];
         foreach ($result[2] as $i) {
             $copy = $instructions;
 
             if ($copy[$i][0] == 'nop') {
                 $copy[$i][0] = 'jmp';
-                $bla = $this->getMemorizedRun($copy);
+                $newTry = $this->getMemorizedRun($copy);
             } else {
                 if ($copy[$i][0] == 'jmp') {
                     $copy[$i][0] = 'nop';
-                    $bla = $this->getMemorizedRun($copy);
+                    $newTry = $this->getMemorizedRun($copy);
                 }
             }
 
-            if ($bla[0] == count($instructions)) {
-                return $bla[1];
+            if ($newTry[0] == count($instructions)) {
+                return $newTry[1];
             }
         }
 
