@@ -6,19 +6,50 @@ namespace Day09;
 
 final class Day09
 {
-    public function findFirstInvalidNo(string $rawInput, int $range): int
+    // Find Encryption Weakness
+    public function findContiguousSetOfInvalidNumbers(string $rawInput, int $range): int
+    {
+        $numbers = $this->convertInput($rawInput);
+
+        $validSet = [];
+        for ($i = $range; $i <= (count($numbers) - 1); $i++) {
+            $preamble = array_slice($numbers, $i - $range, $range);
+
+            if (!$this->isValidNumber($numbers[$i], $preamble)) {
+                $validSet = $this->getValidContiguousSet($numbers[$i], $numbers);
+                sort($validSet);
+            }
+        }
+
+        return $validSet[0] + end($validSet);
+    }
+
+    private function getValidContiguousSet(int $sum, array $numbers): array
+    {
+        for ($i = 2; $i <= count($numbers); $i++) {
+            for ($j = 0; $j <= count($numbers); $j++) {
+                if (array_sum(array_slice($numbers, $j, $i)) == $sum) {
+                    return array_slice($numbers, $j, $i);
+                }
+            }
+        }
+
+        return [];
+    }
+
+    public function findFirstInvalidNumber(string $rawInput, int $range): int
     {
         $numbers = $this->convertInput($rawInput);
 
         for ($i = $range; $i <= count($numbers); $i++) {
             $preamble = array_slice($numbers, $i - $range, $range);
 
-            if (!$this->isValidNumber((int)$numbers[$i], $preamble)) {
-                return (int)$numbers[$i];
+            if (!$this->isValidNumber($numbers[$i], $preamble)) {
+                return $numbers[$i];
             }
         }
 
-        return 1;
+        return 0;
     }
 
     private function isValidNumber(int $sum, array $preamble): bool
@@ -34,6 +65,6 @@ final class Day09
 
     private function convertInput(string $rawInput): array
     {
-        return explode("\n", $rawInput);
+        return array_map('intval', explode("\n", $rawInput));
     }
 }
