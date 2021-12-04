@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5334edba7632a2b9b5e54b0432ddca4d",
+    "content-hash": "e1b7e308f472bc9950ad549d12332f0a",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -2095,6 +2095,48 @@
     ],
     "packages-dev": [
         {
+            "name": "approvals/approval-tests",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/approvals/ApprovalTests.php.git",
+                "reference": "1905c3868f0f6825a9a397554ce85855db5f0b67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/approvals/ApprovalTests.php/zipball/1905c3868f0f6825a9a397554ce85855db5f0b67",
+                "reference": "1905c3868f0f6825a9a397554ce85855db5f0b67",
+                "shasum": ""
+            },
+            "require": {
+                "delight-im/str": "^2.4",
+                "phpunit/phpunit": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ApprovalTests\\": "src/",
+                    "ApprovalTests\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Llewellyn Falco",
+                    "email": "llewellyn.falco@gmail.com"
+                }
+            ],
+            "description": "Approval Testing for your legacy projects.",
+            "homepage": "https://github.com/approvals/ApprovalTests.php",
+            "support": {
+                "source": "https://github.com/approvals/ApprovalTests.php/tree/v1.4.0"
+            },
+            "time": "2019-04-10T19:22:59+00:00"
+        },
+        {
             "name": "beberlei/assert",
             "version": "v3.3.0",
             "source": {
@@ -2158,6 +2200,46 @@
                 "source": "https://github.com/beberlei/assert/tree/v3.3.0"
             },
             "time": "2020-11-13T20:02:54+00:00"
+        },
+        {
+            "name": "delight-im/str",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/delight-im/PHP-Str.git",
+                "reference": "ea3e40132e9d4ce27da337dae6286f2478b15f56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/delight-im/PHP-Str/zipball/ea3e40132e9d4ce27da337dae6286f2478b15f56",
+                "reference": "ea3e40132e9d4ce27da337dae6286f2478b15f56",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Delight\\Str\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Convenient object-oriented operations on strings",
+            "homepage": "https://github.com/delight-im/PHP-Str",
+            "keywords": [
+                "string",
+                "strings"
+            ],
+            "support": {
+                "issues": "https://github.com/delight-im/PHP-Str/issues",
+                "source": "https://github.com/delight-im/PHP-Str/tree/v2.4.0"
+            },
+            "time": "2016-07-27T22:19:41+00:00"
         },
         {
             "name": "php-vcr/php-vcr",
