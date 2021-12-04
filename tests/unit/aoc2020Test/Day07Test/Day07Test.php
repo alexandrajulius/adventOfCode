@@ -44,7 +44,7 @@ dotted black bags contain no other bags.',
         ];
 
         yield 'For rules final' => [
-            'input' => file_get_contents('./tests/fixtures/day07.txt'),
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day07.txt'),
             'bag' => 'shiny gold',
             'result' => 197
         ];
@@ -99,7 +99,7 @@ dark violet bags contain no other bags.',
         ];
 
         yield 'For rules final' => [
-            'input' => file_get_contents('./tests/fixtures/day07.txt'),
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day07.txt'),
             'bag' =>  [
                 'count' => '1',
                 'bag' => 'shiny gold',

@@ -87,7 +87,7 @@ b',
         ];
 
         yield 'For answers final' => [
-            'input' => file_get_contents('./tests/fixtures/day06.txt'),
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day06.txt'),
             'result' => 3235
         ];
     }
@@ -124,7 +124,7 @@ b',
         ];
 
         yield 'For answers final' => [
-            'input' => file_get_contents('./tests/fixtures/day06.txt'),
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day06.txt'),
             'result' => 6587
         ];
     }

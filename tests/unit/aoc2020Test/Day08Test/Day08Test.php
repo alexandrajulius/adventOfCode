@@ -43,7 +43,7 @@ acc +6',
         ];
 
         yield 'For instructions final' => [
-            'instructions' => file_get_contents('./tests/fixtures/day08.txt'),
+            'instructions' => file_get_contents('./tests/fixtures/aoc2020/day08.txt'),
             'lastAccValue' => 1160
         ];
     }
@@ -74,7 +74,7 @@ acc +6',
         ];
 
         yield 'For instructions final' => [
-            'instructions' => file_get_contents('./tests/fixtures/day08.txt'),
+            'instructions' => file_get_contents('./tests/fixtures/aoc2020/day08.txt'),
             'lastAccValue' => 1451
         ];
     }

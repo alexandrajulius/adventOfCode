@@ -55,7 +55,7 @@ final class Day09Test extends TestCase
         ];
 
         yield 'For input final' => [
-            'input' => file_get_contents('./tests/fixtures/day09.txt'),
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day09.txt'),
             'range' => 25,
             'inValidNo' => 70672245
         ];
@@ -99,7 +99,7 @@ final class Day09Test extends TestCase
         ];
 
         yield 'For input final' => [
-            'input' => file_get_contents('./tests/fixtures/day09.txt'),
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day09.txt'),
             'range' => 25,
             'inValidNo' => 552655238
         ];

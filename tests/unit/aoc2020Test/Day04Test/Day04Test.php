@@ -115,7 +115,7 @@ iyr:2011 ecl:brn hgt:59in',
         ];
 
         yield 'PassportData final' => [
-            'input' => file_get_contents('./tests/fixtures/day04.txt'),
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day04.txt'),
             'result' => 219
         ];
     }
@@ -170,7 +170,7 @@ iyr:2011 ecl:brn hgt:59in',
         ];
 
         yield 'PassportData final' => [
-            'input' => file_get_contents('./tests/fixtures/day04.txt'),
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day04.txt'),
             'result' => 127
         ];
     }

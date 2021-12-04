@@ -63,7 +63,7 @@ final class Day05Test extends TestCase
     public function provideBoardingPasses(): Generator
     {
         yield 'Boarding Pass final' => [
-            'boardingPasses' => file_get_contents('./tests/fixtures/day05.txt'),
+            'boardingPasses' => file_get_contents('./tests/fixtures/aoc2020/day05.txt'),
             'row' => 848
         ];
     }
@@ -81,7 +81,7 @@ final class Day05Test extends TestCase
     public function provideBoardingPassesForMyId(): Generator
     {
         yield 'Boarding Pass final' => [
-            'boardingPasses' => file_get_contents('./tests/fixtures/day05.txt'),
+            'boardingPasses' => file_get_contents('./tests/fixtures/aoc2020/day05.txt'),
             'row' => 682
         ];
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace aoc2020\Day04;
 
-use Day04\Day04PassportValueValidator;
+use aoc2020\Day04\Day04PassportValueValidator;
 
 final class Day04
 {
