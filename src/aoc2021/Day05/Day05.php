@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace aoc2021\Day05;
 
-
 final class Day05
 {
     public function firstTask(string $input): int

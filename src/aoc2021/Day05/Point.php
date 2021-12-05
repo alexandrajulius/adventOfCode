@@ -23,11 +23,6 @@ final class Point
         return (int)$this->coordinates[1];
     }
 
-    public function setX(int $value): void
-    {
-        $this->coordinates[0] = $value;
-    }
-
     public function setY(int $value): void
     {
         $this->coordinates[1] = $value;
