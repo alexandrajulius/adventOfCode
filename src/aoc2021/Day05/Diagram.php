@@ -17,7 +17,7 @@ final class Diagram
                 $lineInput[] = explode(',', $coordinate);
             }
           #  $diagram->drawLine($lineInput[0], $lineInput[1]);
-            $diagram->drawAllLines($lineInput[0], $lineInput[1]);
+            $diagram->drawAllLines(new Point($lineInput[0]), new Point($lineInput[1]));
         }
 
         return $diagram;
@@ -57,12 +57,10 @@ final class Diagram
     }
 
     public function drawAllLines(
-        array $startCoordinate,
-        array $endCoordinate
+        Point $start,
+        Point $end
     ): void
     {
-        $start = new Point($startCoordinate);
-        $end = new Point($endCoordinate);
         $dots = $this->getPointsBetweenStartAndEndForAllLines($start, $end);
 
         foreach ($dots as $dot) {
