@@ -8,7 +8,7 @@ final class Diagram
 {
     public array $rows = [];
 
-    static function create($allCoordinates): Diagram
+    static function create(array $allCoordinates, string $task): Diagram
     {
         $diagram = new Diagram();
         foreach($allCoordinates as $coordinates) {
@@ -16,8 +16,12 @@ final class Diagram
             foreach($coordinates as $coordinate) {
                 $lineInput[] = explode(',', $coordinate);
             }
-          #  $diagram->drawLine($lineInput[0], $lineInput[1]);
-            $diagram->drawAllLines(new Point($lineInput[0]), new Point($lineInput[1]));
+            if ($task === 'task1') {
+                  $diagram->drawLine($lineInput[0], $lineInput[1]);
+            }
+            if ($task === 'task2') {
+                $diagram->drawAllLines(new Point($lineInput[0]), new Point($lineInput[1]));
+            }
         }
 
         return $diagram;
