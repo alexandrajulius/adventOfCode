@@ -6,6 +6,20 @@ namespace aoc2021\Day06;
 
 final class Day06
 {
+    /**
+     * $fishMap init for [3,4,3,1,2]
+     * [
+     *      0 => 0
+     *      1 => 1
+     *      2 => 1
+     *      3 => 2
+     *      4 => 1
+     *      5 => 0
+     *      6 => 0
+     *      7 => 0
+     *      8 => 0
+     * ]
+     */
     public function firstTask(string $input, int $days): int
     {
         $fishMap = $this->getFishMap($input);
