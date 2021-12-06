@@ -10,7 +10,6 @@ final class Day06
     {
         $fishMap = $this->getFishMap($input);
         while ($days >= 1) {
-
             $nextFishMap = $this->getEmptyFishMap();
             $newBorn = $fishMap[0];
             foreach ($fishMap as $timer => $amountOfFish) {
@@ -18,7 +17,6 @@ final class Day06
                     $nextFishMap[$timer] = $fishMap[$timer] - $amountOfFish;
             }
             $fishMap = $nextFishMap;
-
             $fishMap[6] = $nextFishMap[6] + $newBorn;
             $fishMap[8] = $nextFishMap[8] + $newBorn;
             $days--;
@@ -31,7 +29,6 @@ final class Day06
     {
         $stringList = explode(',', $input);
         $fishMap = $this->getEmptyFishMap();
-
         foreach ($stringList as $timer) {
             ++$fishMap[(int)$timer];
         }
@@ -41,12 +38,8 @@ final class Day06
 
     private function getEmptyFishMap(): array
     {
-        $fishMap = [];
-        foreach (range(0, 8) as $index) {
-            $fishMap[$index] = 0;
-        }
-
-        return $fishMap;
+        return array_map(function(int $index): int {
+            return 0;
+        }, range(0,8));
     }
-
 }
