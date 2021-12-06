@@ -7,12 +7,10 @@ namespace aoc2021\Day06;
 final class Timer
 {
     public int $value;
-    public bool $current;
 
-    public function __construct(int $value, bool $current)
+    public function __construct(int $value)
     {
         $this->value = $value;
-        $this->current = $current;
     }
 
     public function decrease(): void
