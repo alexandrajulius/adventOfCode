@@ -20,7 +20,7 @@ final class Day06
      *      8 => 0
      * ]
      */
-    public function firstTask(string $input, int $days): int
+    public function firstAndSecondTask(string $input, int $days): int
     {
         $fishMap = $this->getFishMap($input);
         while ($days >= 1) {

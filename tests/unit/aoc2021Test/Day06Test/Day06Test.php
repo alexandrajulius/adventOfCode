@@ -21,7 +21,7 @@ final class Day06Test  extends TestCase
      */
     public function testFirstTask(string $input, int $days, int $expected): void
     {
-        $actual = (new Day06())->firstTask($input, $days);
+        $actual = (new Day06())->firstAndSecondTask($input, $days);
 
         self::assertEquals($expected, $actual);
     }
