@@ -17,7 +17,7 @@ final class Day06
 
                 if ($timer->value === -1) {
                     $timer->reset();
-                    $timerList[] = new Timer(8, false);
+                    $timerList[] = new Timer(8);
                 }
 
             }
@@ -35,7 +35,7 @@ final class Day06
         $stringList = explode(',', $input);
         $timerList = [];
         foreach ($stringList as $timer) {
-            $timerList[] = new Timer((int)$timer, false);
+            $timerList[] = new Timer((int)$timer);
         }
         return $timerList;
     }
