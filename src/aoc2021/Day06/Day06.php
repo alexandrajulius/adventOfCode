@@ -8,35 +8,45 @@ final class Day06
 {
     public function firstTask(string $input, int $days): int
     {
-        $timerList = $this->getTimerList($input);
+        $fishMap = $this->getFishMap($input);
         while ($days >= 1) {
-            foreach ($timerList as $timer) {
-                if ($timer->value >= 0) {
-                    $timer->decrease();
-                }
 
-                if ($timer->value === -1) {
-                    $timer->reset();
-                    $timerList[] = new Timer(8);
-                }
-
+            $nextFishMap = $this->getEmptyFishMap();
+            $newBorn = $fishMap[0];
+            foreach ($fishMap as $timer => $amountOfFish) {
+                    $nextFishMap[$timer - 1] = $fishMap[$timer];
+                    $nextFishMap[$timer] = $fishMap[$timer] - $amountOfFish;
             }
+            $fishMap = $nextFishMap;
+
+            $fishMap[6] = $nextFishMap[6] + $newBorn;
+            $fishMap[8] = $nextFishMap[8] + $newBorn;
             $days--;
         }
 
-        return count($timerList);
+        return array_sum(array_values($fishMap));
     }
 
-    /**
-     * @return Timer[]
-     */
-    private function getTimerList(string $input): array
+    private function getFishMap(string $input): array
     {
         $stringList = explode(',', $input);
-        $timerList = [];
+        $fishMap = $this->getEmptyFishMap();
+
         foreach ($stringList as $timer) {
-            $timerList[] = new Timer((int)$timer);
+            ++$fishMap[(int)$timer];
         }
-        return $timerList;
+
+        return $fishMap;
     }
+
+    private function getEmptyFishMap(): array
+    {
+        $fishMap = [];
+        foreach (range(0, 8) as $index) {
+            $fishMap[$index] = 0;
+        }
+
+        return $fishMap;
+    }
+
 }

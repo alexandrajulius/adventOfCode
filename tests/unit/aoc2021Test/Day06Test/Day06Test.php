@@ -28,7 +28,7 @@ final class Day06Test  extends TestCase
 
     public function provideInputFirstTask(): Generator
     {
-/*
+
         yield 'Dummy input first task 18 days' => [
             'input' => '3,4,3,1,2',
             'days' => 18,
@@ -46,20 +46,18 @@ final class Day06Test  extends TestCase
             'days' => 80,
             'expected' => 371379
         ];
-*/
 
         yield 'Dummy input first task 256 days' => [
             'input' => '3,4,3,1,2',
             'days' => 256,
             'expected' => 26984457539
         ];
-/*
-        yield 'For input final' => [
+
+        yield 'For input final for 256 days' => [
             'input' => trim(file_get_contents('./tests/fixtures/aoc2021/day06.txt')),
             'days' => 256,
-            'expected' => 371379
+            'expected' => 1674303997472
         ];
-*/
     }
 
 }
