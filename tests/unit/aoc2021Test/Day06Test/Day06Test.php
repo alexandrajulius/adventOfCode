@@ -9,7 +9,7 @@ use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-final class Day06Test  extends TestCase
+final class Day06Test extends TestCase
 {
     public function testCanBeInstantiated(): void
     {
