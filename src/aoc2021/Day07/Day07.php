@@ -27,11 +27,15 @@ final class Day07
         $fuel = 0;
         foreach ($list as $position) {
             $diff = abs($position - $horizon);
-            $range = range(0, $diff, 1);
-            $fuel += array_sum($range);
+            $fuel += $this->getSumOfSeries($diff);
           }
 
         return $fuel;
+    }
+
+    private function getSumOfSeries(int $n): int
+    {
+        return $n * ($n + 1) / 2;
     }
 
     public function getAlignedPositions(array $list, int $horizon): int
