@@ -9,7 +9,7 @@ use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-final class Day09Test  extends TestCase
+final class Day09Test extends TestCase
 {
     public function testCanBeInstantiated(): void
     {
@@ -21,7 +21,7 @@ final class Day09Test  extends TestCase
      */
     public function testFirstTask(string $input, int $expected): void
     {
-        $actual = (new Day09())->firstTaskNew($input);
+        $actual = (new Day09())->firstTask($input);
 
         self::assertEquals($expected, $actual);
     }

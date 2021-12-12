@@ -6,7 +6,7 @@ namespace aoc2021\Day09;
 
 final class Day09
 {
-    public function firstTaskNew(string $input): int
+    public function firstTask(string $input): int
     {
         $heightmap = $this->getHeightMap($input);
         $lowestPoints = $heightmap->getLowestPoints();
