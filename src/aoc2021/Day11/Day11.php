@@ -6,16 +6,17 @@ namespace aoc2021\Day11;
 
 final class Day11
 {
-    public int $steps = 1;
+    public const STEPS = 1;
 
     public function firstTask(string $input): int
     {
         $octopusGrid = Grid::create($input);
 
-        for ($i=0; $i < )
+        $flashCount = 0;
+        for ($i = self::STEPS; $i >= 0; $i--) {
+            $flashCount += $octopusGrid->simulateStep($i, 0);
+        }
 
-        return 0;
+        return $flashCount;
     }
-
-
 }

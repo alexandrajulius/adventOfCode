@@ -29,4 +29,59 @@ final class Grid
     {
         $this->rows[] = $row;
     }
+
+    public function simulateStep(int $i, int $flashCount = 0): int
+    {
+        foreach ($this->rows as $row) {
+            foreach ($row as $octopus) {
+                $flashCount = $this->step($i, $octopus, $flashCount);
+            }
+        }
+        return $flashCount;
+    }
+
+    private function step(int $i, Octopus $octopus, $flashCount): int
+    {
+        if ($i === 0) {
+            return $flashCount;
+        }
+        if ($octopus->getEnergyLevel() < 9) {
+            $octopus->incrementEnergyLevel();
+        }
+
+        if ($octopus->getEnergyLevel() === 9) {
+            $octopus->flash();
+            $flashCount++;
+            $neighbors = $this->getAdjacentOctopuses($octopus);
+            foreach ($neighbors as $neighbor) {
+                $flashCount = $this->step($i, $neighbor, $flashCount);
+            }
+        }
+
+        return $flashCount;
+    }
+
+    public function getAdjacentOctopuses(Octopus $octopus): array
+    {
+        $adjacentDiffs = [
+            [1, 0], [-1, 0], [0, 1], [0, -1],
+            [1, 1], [-1, 1], [1, -1], [-1, -1]
+        ];
+
+        $adjacentOctopuses = [];
+        foreach ($adjacentDiffs as [$y, $x]) {
+            $adjacentOctopuses[] = $this->getOctopusAt($octopus->getY() + $y, $octopus->getX() + $x);
+        }
+
+        return $adjacentOctopuses;
+    }
+
+    public function getOctopusAt(int $y, int $x): Octopus
+    {
+        if (isset($this->rows[$y][$x])) {
+            return $this->rows[$y][$x];
+        }
+
+        return new Octopus([$y, $x, 9]);
+    }
 }

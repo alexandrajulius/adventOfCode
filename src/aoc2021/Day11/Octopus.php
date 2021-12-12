@@ -15,17 +15,22 @@ final class Octopus
 
     public function getY(): int
     {
-        return (int)$this->coordinates[0];
+        return $this->coordinates[0];
     }
 
     public function getX(): int
     {
-        return (int)$this->coordinates[1];
+        return $this->coordinates[1];
     }
 
-    public function getValue(): int
+    public function getEnergyLevel(): int
     {
-        return (int)$this->coordinates[2];
+        return $this->coordinates[2];
+    }
+
+    public function incrementEnergyLevel(): void
+    {
+        $this->coordinates[2]++;
     }
 
     public function hash(): string

@@ -34,7 +34,7 @@ final class Day11Test  extends TestCase
 19191
 19991
 11111',
-            'expected' => 26397
+            'expected' => 9
         ];
 /*
         yield 'For input final' => [
