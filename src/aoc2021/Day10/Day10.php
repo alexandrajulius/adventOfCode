@@ -6,21 +6,21 @@ namespace aoc2021\Day10;
 
 final class Day10
 {
-    public array $bracketMap = [
+    public const GRAMMAR = [
         '(' => ')',
         '[' => ']',
         '{' => '}',
         '<' => '>'
     ];
 
-    public array $charScores = [
+    public const CHAR_SCORES = [
         ')' => 3,
         ']' => 57,
         '}' => 1197,
         '>' => 25137
     ];
 
-    public array $secondTaskCharScores = [
+    public const SECOND_CHAR_SCORES = [
         ')' => 1,
         ']' => 2,
         '}' => 3,
@@ -67,7 +67,7 @@ final class Day10
         $score = 0;
         foreach ($chars as $char) {
             $score *= 5;
-            $score += $this->secondTaskCharScores[$char];
+            $score += self::SECOND_CHAR_SCORES[$char];
         }
 
         return $score;
@@ -83,16 +83,16 @@ final class Day10
         $chars = str_split($incomplete, 1);
         $stack = [];
         foreach ($chars as $char) {
-            if (array_key_exists($char, $this->bracketMap)) {
+            if (array_key_exists($char, self::GRAMMAR)) {
                 $stack[] = $char;
             }
-            if (in_array($char, $this->bracketMap, true)) {
+            if (in_array($char, self::GRAMMAR, true)) {
                 array_pop($stack);
             }
         }
         $completion = [];
         foreach ($stack as $item) {
-            $completion[] = $this->bracketMap[$item];
+            $completion[] = self::GRAMMAR[$item];
         }
         $reversed = array_reverse($completion);
 
@@ -116,14 +116,14 @@ final class Day10
         $chars = str_split($line, 1);
         $stack = [];
         foreach ($chars as $char) {
-            if (array_key_exists($char, $this->bracketMap)) {
+            if (array_key_exists($char, self::GRAMMAR)) {
                 $stack[] = $char;
             }
 
-            if (in_array($char, $this->bracketMap, true)) {
+            if (in_array($char, self::GRAMMAR, true)) {
                 $last = array_pop($stack);
-                if ($last !== array_search($char, $this->bracketMap, true)) {
-                    return $this->charScores[$char];
+                if ($last !== array_search($char, self::GRAMMAR, true)) {
+                    return self::CHAR_SCORES[$char];
                 }
             }
         }

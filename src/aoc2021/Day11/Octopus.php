@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace aoc2021\Day09;
+namespace aoc2021\Day11;
 
-final class Point
+final class Octopus
 {
     public array $coordinates;
 
@@ -31,5 +31,10 @@ final class Point
     public function hash(): string
     {
         return sprintf("%s,%s", $this->getY(), $this->getX());
+    }
+
+    public function flash(): void
+    {
+        $this->coordinates[2] = 0;
     }
 }
