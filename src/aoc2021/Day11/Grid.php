@@ -30,21 +30,18 @@ final class Grid
         $this->rows[] = $row;
     }
 
-    public function simulateStep(int $i, int $flashCount = 0): int
+    public function simulateStep(int $flashCount = 0): int
     {
         foreach ($this->rows as $row) {
             foreach ($row as $octopus) {
-                $flashCount = $this->step($i, $octopus, $flashCount);
+                $flashCount = $this->step($octopus, $flashCount);
             }
         }
         return $flashCount;
     }
 
-    private function step(int $i, Octopus $octopus, $flashCount): int
+    private function step(Octopus $octopus, $flashCount): int
     {
-        if ($i === 0) {
-            return $flashCount;
-        }
         if ($octopus->getEnergyLevel() < 9) {
             $octopus->incrementEnergyLevel();
         }
@@ -54,7 +51,7 @@ final class Grid
             $flashCount++;
             $neighbors = $this->getAdjacentOctopuses($octopus);
             foreach ($neighbors as $neighbor) {
-                $flashCount = $this->step($i, $neighbor, $flashCount);
+                $flashCount = $this->step($neighbor, $flashCount);
             }
         }
 
