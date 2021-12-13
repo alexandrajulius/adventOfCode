@@ -9,7 +9,7 @@ use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
-final class Day11Test  extends TestCase
+final class Day11Test extends TestCase
 {
     public function testCanBeInstantiated(): void
     {
@@ -19,15 +19,30 @@ final class Day11Test  extends TestCase
     /**
      * @dataProvider provideInputFirstTask
      */
-    public function testFirstTask(string $input, int $expected): void
+    public function testFirstTask(string $input, int $steps, int $expected): void
     {
-        $actual = (new Day11())->firstTask($input);
+        $actual = (new Day11())->firstTask($input, $steps);
 
         self::assertEquals($expected, $actual);
     }
 
     public function provideInputFirstTask(): Generator
     {
+        yield 'Dummy input first example' => [
+            'input' => '5483143223
+2745854711
+5264556173
+6141336146
+6357385478
+4167524645
+2176841721
+6882881134
+4846848554
+5283751526',
+            'steps' => 10,
+            'expected' => 204
+        ];
+
         yield 'Dummy input' => [
             'input' => '5483143223
 2745854711
@@ -39,11 +54,14 @@ final class Day11Test  extends TestCase
 6882881134
 4846848554
 5283751526',
+            'steps' => 100,
             'expected' => 1656
         ];
 
+
         yield 'For input final' => [
             'input' => trim(file_get_contents('./tests/fixtures/aoc2021/day11.txt')),
+            'steps' => 100,
             'expected' => 1694
         ];
     }
@@ -51,9 +69,9 @@ final class Day11Test  extends TestCase
     /**
      * @dataProvider provideInputSecondTask
      */
-    public function testSecondTask(string $input, int $expected): void
+    public function testSecondTask(string $input, int $steps, int $expected): void
     {
-        $actual = (new Day11())->secondTask($input);
+        $actual = (new Day11())->secondTask($input, $steps);
 
         self::assertEquals($expected, $actual);
     }
@@ -71,11 +89,13 @@ final class Day11Test  extends TestCase
 6882881134
 4846848554
 5283751526',
+            'steps' => 10000,
             'expected' => 195
         ];
 
         yield 'For input final' => [
             'input' => trim(file_get_contents('./tests/fixtures/aoc2021/day11.txt')),
+            'steps' => 1000000000,
             'expected' => 346
         ];
     }
