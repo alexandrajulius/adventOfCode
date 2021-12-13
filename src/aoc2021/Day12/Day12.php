@@ -10,5 +10,4 @@ final class Day12
     {
         return 0;
     }
-
 }

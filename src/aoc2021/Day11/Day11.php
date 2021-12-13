@@ -18,12 +18,12 @@ final class Day11
         return $flashCount;
     }
 
-    public function secondTask(string $input, int $steps): int
+    public function secondTask(string $input): int
     {
         $octopusGrid = Grid::create($input);
 
         $i = 1;
-        while($i < $steps){
+        while(true){
             $flashCount = $octopusGrid->simulateStep();
             if ($flashCount === $octopusGrid->getSize()) {
                 return $i;
@@ -31,6 +31,5 @@ final class Day11
             $i++;
         }
 
-        return 0;
     }
 }

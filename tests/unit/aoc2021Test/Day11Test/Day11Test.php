@@ -69,9 +69,9 @@ final class Day11Test extends TestCase
     /**
      * @dataProvider provideInputSecondTask
      */
-    public function testSecondTask(string $input, int $steps, int $expected): void
+    public function testSecondTask(string $input, int $expected): void
     {
-        $actual = (new Day11())->secondTask($input, $steps);
+        $actual = (new Day11())->secondTask($input);
 
         self::assertEquals($expected, $actual);
     }
@@ -89,13 +89,11 @@ final class Day11Test extends TestCase
 6882881134
 4846848554
 5283751526',
-            'steps' => 10000,
             'expected' => 195
         ];
 
         yield 'For input final' => [
             'input' => trim(file_get_contents('./tests/fixtures/aoc2021/day11.txt')),
-            'steps' => 1000000000,
             'expected' => 346
         ];
     }
