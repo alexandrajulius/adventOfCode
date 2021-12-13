@@ -32,28 +32,23 @@ final class Grid
 
     public function simulateStep(int $flashCount = 0): int
     {
+        $flashed = [];
         foreach ($this->rows as $row) {
             foreach ($row as $octopus) {
-                $flashCount = $this->step($octopus, $flashCount, []);
-            }
-        }
-
-        foreach ($this->rows as $row) {
-            foreach ($row as $octopus) {
-                var_dump($octopus);
+                $flashCount = $this->step($octopus, $flashCount, $flashed);
             }
         }
 
         return $flashCount;
     }
 
-    private function step(Octopus $octopus, int $flashCount, array $flashed): int
+    private function step(Octopus $octopus, int $flashCount, array &$flashed): int
     {
-        if ($octopus->getEnergyLevel() < 9 && !array_key_exists($octopus->hash(), $flashed)) {
+        if ($octopus->getEnergyLevel() <= 9 && !array_key_exists($octopus->hash(), $flashed)) {
             $octopus->incrementEnergyLevel();
         }
 
-        if ($octopus->getEnergyLevel() === 9) {
+        if ($octopus->getEnergyLevel() > 9) {
             $octopus->flash();
             $flashCount++;
             $flashed[$octopus->hash()] = true;
