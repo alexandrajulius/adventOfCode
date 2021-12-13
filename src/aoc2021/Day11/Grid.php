@@ -34,24 +34,34 @@ final class Grid
     {
         foreach ($this->rows as $row) {
             foreach ($row as $octopus) {
-                $flashCount = $this->step($octopus, $flashCount);
+                $flashCount = $this->step($octopus, $flashCount, []);
             }
         }
+
+        foreach ($this->rows as $row) {
+            foreach ($row as $octopus) {
+                var_dump($octopus);
+            }
+        }
+
         return $flashCount;
     }
 
-    private function step(Octopus $octopus, $flashCount): int
+    private function step(Octopus $octopus, int $flashCount, array $flashed): int
     {
-        if ($octopus->getEnergyLevel() < 9) {
+        if ($octopus->getEnergyLevel() < 9 && !array_key_exists($octopus->hash(), $flashed)) {
             $octopus->incrementEnergyLevel();
         }
 
         if ($octopus->getEnergyLevel() === 9) {
             $octopus->flash();
             $flashCount++;
+            $flashed[$octopus->hash()] = true;
             $neighbors = $this->getAdjacentOctopuses($octopus);
             foreach ($neighbors as $neighbor) {
-                $flashCount = $this->step($neighbor, $flashCount);
+                if ($neighbor !== null && !array_key_exists($neighbor->hash(), $flashed)) {
+                    $flashCount = $this->step($neighbor, $flashCount, $flashed);
+                }
             }
         }
 
@@ -73,12 +83,12 @@ final class Grid
         return $adjacentOctopuses;
     }
 
-    public function getOctopusAt(int $y, int $x): Octopus
+    public function getOctopusAt(int $y, int $x): ?Octopus
     {
         if (isset($this->rows[$y][$x])) {
             return $this->rows[$y][$x];
         }
 
-        return new Octopus([$y, $x, 9]);
+        return null;
     }
 }

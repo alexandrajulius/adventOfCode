@@ -6,7 +6,7 @@ namespace aoc2021\Day11;
 
 final class Day11
 {
-    public const STEPS = 2;
+    public const STEPS = 1;
 
     public function firstTask(string $input): int
     {
