@@ -6,7 +6,7 @@ namespace aoc2021\Day11;
 
 final class Day11
 {
-    public const STEPS = 100;
+    public const STEPS = 199;
 
     public function firstTask(string $input): int
     {
@@ -18,5 +18,21 @@ final class Day11
         }
 
         return $flashCount;
+    }
+
+    public function secondTask(string $input): int
+    {
+        $octopusGrid = Grid::create($input);
+
+        $i = 1;
+        while($i < 100000000){
+            $flashCount = $octopusGrid->simulateStep();
+            if ($flashCount === $octopusGrid->getSize()) {
+                return $i;
+            }
+            $i++;
+        }
+        
+        return 0;
     }
 }

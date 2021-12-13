@@ -25,6 +25,16 @@ final class Grid
         return $grid;
     }
 
+    public function getSize(): int
+    {
+        $size = 0;
+        foreach ($this->rows as $row) {
+            $size += count($row);
+        }
+
+        return $size;
+    }
+
     private function addRow(array $row): void
     {
         $this->rows[] = $row;

@@ -48,4 +48,35 @@ final class Day11Test  extends TestCase
         ];
     }
 
+    /**
+     * @dataProvider provideInputSecondTask
+     */
+    public function testSecondTask(string $input, int $expected): void
+    {
+        $actual = (new Day11())->secondTask($input);
+
+        self::assertEquals($expected, $actual);
+    }
+
+    public function provideInputSecondTask(): Generator
+    {
+        yield 'Dummy input' => [
+            'input' => '5483143223
+2745854711
+5264556173
+6141336146
+6357385478
+4167524645
+2176841721
+6882881134
+4846848554
+5283751526',
+            'expected' => 195
+        ];
+
+        yield 'For input final' => [
+            'input' => trim(file_get_contents('./tests/fixtures/aoc2021/day11.txt')),
+            'expected' => 346
+        ];
+    }
 }
