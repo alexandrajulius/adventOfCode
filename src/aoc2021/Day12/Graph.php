@@ -65,7 +65,7 @@ final class Graph
         }
 
         $v->setVisited(true);
-        $path[] = $v->name;
+      #  $path[] = $v->name;
 
         if ($v->isEnd()) {
             $v->setVisited(false);
