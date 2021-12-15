@@ -9,8 +9,9 @@ final class Graph
     public array $edges = [];
     public array $paths = [];
     public string $small = '';
+    public string $flag = '';
 
-    public static function create(string $input): Graph
+    public static function create(string $input, string $flag): Graph
     {
         $edges = explode("\n", $input);
         $graph = new self();
@@ -37,6 +38,7 @@ final class Graph
                     ));
             }
         }
+        $graph->flag = $flag;
 
         return $graph;
     }
@@ -54,7 +56,6 @@ final class Graph
             }
         }
 
-    #    var_dump($this->paths);
         return $this->paths;
     }
 
@@ -65,32 +66,39 @@ final class Graph
         }
 
         $v->setVisited(true);
-      #  $path[] = $v->name;
+        $path[] = $v->name;
 
         if ($v->isEnd()) {
             $v->setVisited(false);
             $this->paths[] = $path;
             return;
         }
+var_dump($path);
         foreach ($this->getNeighbors($v) as $neighborEdge) {
-            if ($this->satisfiesFirstCriteria($neighborEdge->end, $path)) {
+            if ($this->satisfiesCriteria($neighborEdge, $path)) {
                 $neighborEdge->start->setVisited(true);
 
                 $this->dfs($neighborEdge->end, $path);
-                if (($key = array_search($neighborEdge->end->name, $path, true)) !== false) {
-                    unset($path[$key]);
-                }
+
+                $this->popVertex($neighborEdge->end, $path);
                 $neighborEdge->start->setVisited(false);
                 $neighborEdge->end->setVisited(false);
             }
         }
     }
 
-    private function getNeighbors(Vertex $vertex): array
+    private function popVertex(Vertex $v, array $path): void
+    {
+        if (($key = array_search($v->name, $path, true)) !== false) {
+            unset($path[$key]);
+        }
+    }
+
+    private function getNeighbors(Vertex $v): array
     {
         $neighbors = [];
         foreach ($this->edges as $edge) {
-            if ($edge->start->name === $vertex->name) {
+            if ($edge->start->name === $v->name) {
                 $neighbors[] = $edge;
             }
         }
@@ -98,34 +106,38 @@ final class Graph
         return $neighbors;
     }
 
-    private function satisfiesFirstCriteria(Vertex $vertex, array $path): bool
+    private function satisfiesCriteria(Edge $e, array $path): bool
     {
-        return !($vertex->isSmall() && $this->isInPath($vertex->name, $path));
-    }
-
-    private function satisfiesSecondCriteria(Vertex $vertex, array $path): bool
-    {
-        if ($this->small === '' && $vertex->isSmall()) {
-            $this->small = $vertex->name;
+        if ($this->flag === 'firstTask') {
+            return !($e->end->isSmall() && $this->isInPath($e->end, $path));
         }
 
-        return !($vertex->isSmall() && $this->isInPathTwice($vertex->name, $path));
+        if ($this->small === '' && $e->end->isSmall()) {
+            $this->small = $e->end->name;
+        }
+
+        return !($e->end->isSmall() && $this->isInPathTwice($e, $path));
     }
 
-    private function isInPath(string $vertexName, array $path): bool
+    private function isInPath(Vertex $v, array $path): bool
     {
-        return in_array($vertexName, $path, true);
+        return in_array($v->name, $path, true);
     }
 
-    private function isInPathTwice(string $vertexName, array $path): bool
+    private function isInPathTwice(Edge $e, array $path): bool
     {
-        if ($vertexName !== $this->small) {
-            return in_array($vertexName, $path, true);
+        if ($e->end->name !== $this->small) {
+            return in_array($e->end->name, $path, true);
         }
 
         $counts = array_count_values($path);
-        if (isset($counts[$vertexName])) {
-            return $counts[$vertexName] >= 2;
+        if (isset($counts[$e->end->name])) {
+            if ($counts[$e->end->name] < 2) {
+                $e->end->setVisited(false);
+                $e->start->setVisited(false);
+                return false;
+            }
+            return $counts[$e->end->name] >= 2;
         }
 
         return false;

@@ -8,7 +8,7 @@ final class Day12
 {
     public function firstTask(string $input): int
     {
-        $caveMap = Graph::create($input);
+        $caveMap = Graph::create($input, 'firstTask');
         $allPaths = $caveMap->getAllPaths();
 
         return count($allPaths);
@@ -16,7 +16,7 @@ final class Day12
 
     public function secondTask(string $input): int
     {
-        $caveMap = Graph::create($input);
+        $caveMap = Graph::create($input, 'secondTask');
         $allPaths = $caveMap->getAllPaths();
 
         return count($allPaths);
