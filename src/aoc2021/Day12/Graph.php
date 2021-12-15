@@ -73,7 +73,7 @@ final class Graph
             $this->paths[] = $path;
             return;
         }
-var_dump($path);
+
         foreach ($this->getNeighbors($v) as $neighborEdge) {
             if ($this->satisfiesCriteria($neighborEdge, $path)) {
                 $neighborEdge->start->setVisited(true);
@@ -111,7 +111,7 @@ var_dump($path);
         if ($this->flag === 'firstTask') {
             return !($e->end->isSmall() && $this->isInPath($e->end, $path));
         }
-
+        // argh, brain hurts
         if ($this->small === '' && $e->end->isSmall()) {
             $this->small = $e->end->name;
         }

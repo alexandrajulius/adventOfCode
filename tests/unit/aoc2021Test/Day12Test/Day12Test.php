@@ -21,7 +21,7 @@ final class Day12Test extends TestCase
      */
     public function testFirstTask(string $input, int $expected): void
     {
-        $actual = (new Day12())->firstTask($input);
+        $actual = (new Day12())->task($input, 'firstTask');
 
         self::assertEquals($expected, $actual);
     }
@@ -87,14 +87,13 @@ start-RW',
      */
     public function testSecondTask(string $input, int $expected): void
     {
-        $actual = (new Day12())->secondTask($input);
+        $actual = (new Day12())->task($input, 'secondTask');
 
         self::assertEquals($expected, $actual);
     }
 
     public function provideInputSecondTask(): Generator
     {
-
         yield 'First dummy input' => [
             'input' => 'start-A
 start-b

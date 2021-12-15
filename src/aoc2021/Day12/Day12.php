@@ -6,17 +6,9 @@ namespace aoc2021\Day12;
 
 final class Day12
 {
-    public function firstTask(string $input): int
+    public function task(string $input, string $flag): int
     {
-        $caveMap = Graph::create($input, 'firstTask');
-        $allPaths = $caveMap->getAllPaths();
-
-        return count($allPaths);
-    }
-
-    public function secondTask(string $input): int
-    {
-        $caveMap = Graph::create($input, 'secondTask');
+        $caveMap = Graph::create($input, $flag);
         $allPaths = $caveMap->getAllPaths();
 
         return count($allPaths);
