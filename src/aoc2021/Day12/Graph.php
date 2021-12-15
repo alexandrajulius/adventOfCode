@@ -17,8 +17,14 @@ final class Graph
         $graph = new self();
         foreach ($edges as $edge) {
             $rawEdge = explode('-', $edge);
-            if (!in_array('start', $rawEdge, true)
-                && !in_array('end', $rawEdge, true)) {
+            if ($graph->isStartOrEnd($rawEdge)) {
+                $sorted = $graph->sort($rawEdge);
+                $graph->addEdge(
+                    new Edge(
+                        new Vertex($sorted[0]),
+                        new Vertex($sorted[1])
+                    ));
+            } else {
                 $graph->addEdge(
                     new Edge(
                         new Vertex($rawEdge[0]),
@@ -29,18 +35,17 @@ final class Graph
                         new Vertex($rawEdge[1]),
                         new Vertex($rawEdge[0])
                     ));
-            } else {
-                $sorted = $graph->sort($rawEdge);
-                $graph->addEdge(
-                    new Edge(
-                        new Vertex($sorted[0]),
-                        new Vertex($sorted[1])
-                    ));
             }
         }
         $graph->flag = $flag;
 
         return $graph;
+    }
+
+    private function isStartOrEnd(array $rawEdge): bool
+    {
+        return in_array('start', $rawEdge, true)
+            && in_array('end', $rawEdge, true);
     }
 
     private function addEdge(Edge $edge): void
