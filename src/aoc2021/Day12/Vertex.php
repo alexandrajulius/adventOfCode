@@ -28,6 +28,11 @@ final class Vertex
         return $this->name === 'end';
     }
 
+    public function isStart(): bool
+    {
+        return $this->name === 'start';
+    }
+
     public function getVisited(): bool
     {
         return $this->visited;

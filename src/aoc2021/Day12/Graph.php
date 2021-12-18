@@ -8,7 +8,7 @@ final class Graph
 {
     public array $edges = [];
     public array $paths = [];
-    public string $small = '';
+    public array $small = ['', ''];
     public string $flag = '';
 
     public static function create(string $input, string $flag): Graph
@@ -45,7 +45,7 @@ final class Graph
     private function isStartOrEnd(array $rawEdge): bool
     {
         return in_array('start', $rawEdge, true)
-            && in_array('end', $rawEdge, true);
+            || in_array('end', $rawEdge, true);
     }
 
     private function addEdge(Edge $edge): void
@@ -61,6 +61,10 @@ final class Graph
             }
         }
 
+        foreach($this->paths as $path) {
+          #  var_dump(implode(',', $path));
+        }
+
         return $this->paths;
     }
 
@@ -74,7 +78,6 @@ final class Graph
         $path[] = $v->name;
 
         if ($v->isEnd()) {
-            $v->setVisited(false);
             $this->paths[] = $path;
             return;
         }
@@ -86,6 +89,7 @@ final class Graph
                 $this->dfs($neighborEdge->end, $path);
 
                 $this->popVertex($neighborEdge->end, $path);
+
                 $neighborEdge->start->setVisited(false);
                 $neighborEdge->end->setVisited(false);
             }
@@ -116,12 +120,27 @@ final class Graph
         if ($this->flag === 'firstTask') {
             return !($e->end->isSmall() && $this->isInPath($e->end, $path));
         }
-        // argh, brain hurts
-        if ($this->small === '' && $e->end->isSmall()) {
-            $this->small = $e->end->name;
+
+        # brain cannot do part II
+        var_dump(implode(',', $path));
+        var_dump($this->small);
+        if ($this->small[0] === '' && $e->end->isSmall() && !$e->isStart()) {
+            $this->small[0] = $e->end->name;
+            $e->end->setVisited(false);
+            $e->start->setVisited(false);
+            return true;
         }
 
-        return !($e->end->isSmall() && $this->isInPathTwice($e, $path));
+        if ($this->small[0] === $e->end->name && $e->end->isSmall() && !$e->isStart()) {
+            $this->small[1] = '2';
+            return true;
+        }
+
+        if ($this->small[0] === $e->end->name && $this->small[1] === '2') {
+            return false;
+        }
+
+        return !($e->end->isSmall() && $this->isInPath($e->end, $path));
     }
 
     private function isInPath(Vertex $v, array $path): bool
@@ -132,17 +151,17 @@ final class Graph
     private function isInPathTwice(Edge $e, array $path): bool
     {
         if ($e->end->name !== $this->small) {
-            return in_array($e->end->name, $path, true);
+            return $this->isInPath($e->end, $path);
         }
 
         $counts = array_count_values($path);
-        if (isset($counts[$e->end->name])) {
-            if ($counts[$e->end->name] < 2) {
-                $e->end->setVisited(false);
-                $e->start->setVisited(false);
-                return false;
-            }
-            return $counts[$e->end->name] >= 2;
+var_dump($counts);
+        if (isset($counts[$e->end->name]) && ($counts[$e->end->name] < 2)) {
+            return false;
+        }
+
+        if (isset($counts[$e->end->name]) && ($counts[$e->end->name] >= 2)) {
+            return true;
         }
 
         return false;

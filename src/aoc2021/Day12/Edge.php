@@ -30,4 +30,9 @@ final class Edge
     {
         return $this->start->name === 'start';
     }
+
+    public function isEnd(): bool
+    {
+        return $this->start->name === 'end';
+    }
 }
