@@ -34,7 +34,7 @@ final class Day02
                 $this->playerOneMap[$players[0]],
                 $this->playerTwoMap[$players[1]]
             );
-            $sum += $game->resultFirstTask() + $this->shapeScoreMap[$players[1]];
+            $sum += $game->resultFirstTask();
         }
         return $sum;
     }

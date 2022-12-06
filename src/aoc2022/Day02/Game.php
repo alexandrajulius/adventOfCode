@@ -26,12 +26,6 @@ final class Game {
     ];
 
     public array $shapeScoreMap = [
-        'A' => 1,
-        'B' => 2,
-        'C' => 3
-    ];
-
-    public array $humanReadableShapeScoreMap = [
         'Rock' => 1,
         'Paper' => 2,
         'Scissors' => 3
@@ -46,29 +40,29 @@ final class Game {
     public function resultFirstTask(): int
     {
         if ($this->playerOne === $this->playerTwo) {
-            return 3;
+            return 3 + $this->shapeScoreMap[$this->playerTwo];
         }
 
         $move = $this->playerOne . ' ' . $this->playerTwo;
 
-        return $this->decisionMap[$move];
+        return $this->decisionMap[$move] + $this->shapeScoreMap[$this->playerTwo];
     }
 
     public function resultSecondTask(): int
     {
         //draw
         if ($this->playerTwo === 'Y') {
-            return $this->humanReadableShapeScoreMap[$this->playerOne] + 3;
+            return $this->shapeScoreMap[$this->playerOne] + 3;
         }
 
         //loose
         if ($this->playerTwo === 'X') {
-            return $this->humanReadableShapeScoreMap[$this->getLoosingMove()] + 0;
+            return $this->shapeScoreMap[$this->getLoosingMove()] + 0;
         }
 
         //win
         if ($this->playerTwo === 'Z') {
-            return $this->humanReadableShapeScoreMap[$this->getWinningMove()] + 6;
+            return $this->shapeScoreMap[$this->getWinningMove()] + 6;
         }
 
         return 0;
