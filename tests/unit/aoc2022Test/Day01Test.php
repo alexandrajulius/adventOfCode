@@ -23,7 +23,7 @@ final class Day01Test extends TestCase
 
     public function provideInputFirstTask(): Generator
     {
-        yield 'Dummy input first task' => [
+        yield 'Dummy input' => [
             'input' => '1000
             2000
             3000
@@ -41,7 +41,7 @@ final class Day01Test extends TestCase
             'expected' => 24000
         ];
 
-        yield 'For input final' => [
+        yield 'Final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2022/day01.txt'),
             'expected' => 70613
         ];
@@ -59,7 +59,7 @@ final class Day01Test extends TestCase
 
     public function provideInputSecondTask(): Generator
     {
-        yield 'For dummy input' => [
+        yield 'Dummy input' => [
             'input' => '1000
             2000
             3000
@@ -77,7 +77,7 @@ final class Day01Test extends TestCase
             'expected' => 45000
         ];
 
-        yield 'For input final' => [
+        yield 'Final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2022/day01.txt'),
             'expected' => 205805
         ];

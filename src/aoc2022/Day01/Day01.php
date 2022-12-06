@@ -18,7 +18,6 @@ final class Day01
         $caloriesPerElf = $this->getCaloriesPerElf($input);
         rsort($caloriesPerElf);
 
-        var_dump($caloriesPerElf);
         return $caloriesPerElf[0] + $caloriesPerElf[1] + $caloriesPerElf[2];
     }
 
