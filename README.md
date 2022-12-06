@@ -1,7 +1,13 @@
-# Advent of Code 2020
+# Advent of Code
 ## :christmas_tree: [https://adventofcode.com/2020](https://adventofcode.com/2020) :christmas_tree: 
 
 Because this is what we do in December :)
+
+## Table of contents
+
+* [aoc 2022](https://github.com/alexandrajulius/adventOfCode2020/tree/main/src/aoc2022)
+* [aoc 2021](https://github.com/alexandrajulius/adventOfCode2020/tree/main/src/aoc2021)
+* [aoc 2020](https://github.com/alexandrajulius/adventOfCode2020/tree/main/src/aoc2020)
 
 ## How to run
 Dependencies:
