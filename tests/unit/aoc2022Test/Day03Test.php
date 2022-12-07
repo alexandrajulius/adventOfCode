@@ -62,7 +62,7 @@ final class Day03Test extends TestCase
 
         yield 'Final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2022/day03.txt'),
-            'expected' => 8018
+            'expected' => 2518
         ];
     }
 }

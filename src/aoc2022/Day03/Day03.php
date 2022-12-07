@@ -6,13 +6,20 @@ namespace aoc2022\Day03;
 
 final class Day03
 {
+    private array $priorities;
+
+    public function __construct()
+    {
+        $this->priorities = $this->createPriorities();
+    }
+
     public function firstTask(string $input): int
     {   
         $sum = 0;
         $rucksacks = $this->getRucksackContentPerElve($input);
         foreach ($rucksacks as $rucksack) {
             $item = $rucksack->commonElement();
-            $sum += $this->getPriority($item);
+            $sum += array_search($item, $this->priorities);
         }
 
         return $sum;
@@ -24,7 +31,7 @@ final class Day03
         $rucksackGroups = $this->getRucksackContentGroups($input);
         foreach ($rucksackGroups as $group) {
             $item = $this->getCommonElement($group);
-            $sum += $this->getPriority($item);
+            $sum += array_search($item, $this->priorities);
         }
 
         return $sum;
@@ -59,14 +66,13 @@ final class Day03
         return array_values(array_unique($commonElement))[0];
     }
 
-    private function getPriority(string $item): int
+    private function createPriorities(): array
     {
         $lower = range('a', 'z');
         $upper = range('A', 'Z');
-        $letters = array_merge($lower, $upper);      
-        $priorities = $this->reindex($letters, 1);
-
-        return array_search($item, $priorities);;
+        $letters = array_merge($lower, $upper);   
+           
+        return $this->reindex($letters, 1);
     }
 
     private function reindex ($arr, $start_index): array
