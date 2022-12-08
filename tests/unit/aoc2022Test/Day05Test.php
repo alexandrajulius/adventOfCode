@@ -13,7 +13,6 @@ final class Day05Test extends TestCase
     /**
      * @dataProvider provideInputFirstTask
      */
-
      public function testFirstTask(string $input, string $expected): void
     {
         $actual = (new Day05($input))->firstTask();

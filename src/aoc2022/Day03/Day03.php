@@ -18,8 +18,10 @@ final class Day03
         $sum = 0;
         $rucksacks = $this->getRucksackContentPerElve($input);
         foreach ($rucksacks as $rucksack) {
-            $item = $rucksack->commonElement();
-            $sum += array_search($item, $this->priorities);
+            $sum += array_search(
+                $rucksack->commonElement(), 
+                $this->priorities
+            );
         }
 
         return $sum;
@@ -30,8 +32,10 @@ final class Day03
         $sum = 0;
         $rucksackGroups = $this->getRucksackContentGroups($input);
         foreach ($rucksackGroups as $group) {
-            $item = $this->getCommonElement($group);
-            $sum += array_search($item, $this->priorities);
+            $sum += array_search(
+                $this->getCommonElement($group), 
+                $this->priorities
+            );
         }
 
         return $sum;
@@ -57,10 +61,9 @@ final class Day03
 
     private function getCommonElement(array $group): string
     {
-        $groupNewFormat = [];
-        foreach ($group as $rawRucksack) {
-            $groupNewFormat[] = str_split($rawRucksack);
-        }
+        $groupNewFormat = array_map(function(string $rawRucksack): array {
+            return str_split($rawRucksack);
+        }, $group);
         $commonElement = array_intersect($groupNewFormat[0], $groupNewFormat[1], $groupNewFormat[2]);
 
         return array_values(array_unique($commonElement))[0];
