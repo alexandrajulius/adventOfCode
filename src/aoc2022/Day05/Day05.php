@@ -22,8 +22,7 @@ final class Day05
     {   
         foreach ($this->orders as $order) {
             for ($i = 0; $i < $order->count(); $i++) {
-                $topCrate = $this->stacks[$order->from()]->pop();
-                $this->stacks[$order->to()]->push($topCrate);
+                $this->stacks[$order->to()]->push($this->stacks[$order->from()]->pop());
             }
         }
 
@@ -33,8 +32,7 @@ final class Day05
     public function secondTask(): string
     {   
         foreach ($this->orders as $order) {
-            $topCrates = $this->stacks[$order->from()]->popMultiple($order->count());
-            $this->stacks[$order->to()]->pushMultiple($topCrates);
+            $this->stacks[$order->to()]->pushMultiple($this->stacks[$order->from()]->popMultiple($order->count()));
         }
 
         return $this->getWord();
