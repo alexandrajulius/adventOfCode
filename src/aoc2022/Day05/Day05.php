@@ -127,7 +127,7 @@ final class Day05
     {
         $word = '';
         foreach ($this->stacks as $stack) {
-            $word .= $stack->pop(); 
+            $word .= $stack->top(); 
         }
 
         return $word;

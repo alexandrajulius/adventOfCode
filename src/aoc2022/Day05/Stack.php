@@ -43,4 +43,10 @@ final class Stack {
         } 
         return array_reverse($cratesToMove);
     }
+
+    // ha ha!
+    public function top(): string
+    {
+        return end($this->items);
+    }
 }
