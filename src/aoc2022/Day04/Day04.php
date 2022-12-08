@@ -6,11 +6,16 @@ namespace aoc2022\Day04;
 
 final class Day04
 {
-    public function firstTask(string $input): int
+    private array $assignments;
+
+    public function __construct(string $input)
+    {
+        $this->assignments = $this->getElveAssignments($input);
+    }
+    public function firstTask(): int
     {   
-        $elveAssignments = $this->getElveAssignments($input);
         $count = 0;
-        foreach ($elveAssignments as $assignement) {
+        foreach ($this->assignments as $assignement) {
             if ($assignement->fullyOverlaps()) {
                 $count++;
             }
@@ -19,11 +24,10 @@ final class Day04
         return $count;
     }
 
-    public function secondTask(string $input): int
+    public function secondTask(): int
     {   
-        $elveAssignments = $this->getElveAssignments($input);
         $count = 0;
-        foreach ($elveAssignments as $assignement) {
+        foreach ($this->assignments as $assignement) {
             if ($assignement->partlyOverlaps()) {
                 $count++;
             }
