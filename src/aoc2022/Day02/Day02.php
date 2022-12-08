@@ -16,12 +16,18 @@ final class Day02
         'Y' => 'Paper',
         'Z' => 'Scissors'
     ];
-    
-    public function firstTask(string $input): int
+
+    public array $moves;
+
+    public function __construct(string $input)
     {
-        $moves = $this->getMoves($input);
+        $this->moves = $this->getMoves($input);
+    }
+    
+    public function firstTask(): int
+    {
         $sum = 0;
-        foreach ($moves as $move) {
+        foreach ($this->moves as $move) {
             $players = explode(' ', $move);
             $game = new Game(
                 $this->playerOneMap[$players[0]],
@@ -32,11 +38,10 @@ final class Day02
         return $sum;
     }
 
-    public function secondTask(string $input): int
+    public function secondTask(): int
     {
-        $moves = $this->getMoves($input);
         $sum = 0;
-        foreach ($moves as $move) {
+        foreach ($this->moves as $move) {
             $players = explode(' ', $move);
             $game = new Game(
                 $this->playerOneMap[$players[0]],
