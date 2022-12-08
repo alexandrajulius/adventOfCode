@@ -12,6 +12,7 @@ final class Day04
     {
         $this->assignments = $this->getElveAssignments($input);
     }
+    
     public function firstTask(): int
     {   
         $count = 0;
