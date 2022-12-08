@@ -71,12 +71,12 @@ final class Day03
         $lower = range('a', 'z');
         $upper = range('A', 'Z');
         $letters = array_merge($lower, $upper);   
-           
+
         return $this->reindex($letters, 1);
     }
 
     private function reindex ($arr, $start_index): array
     {
-      return array_combine(range($start_index,  count($arr) + ($start_index - 1)), array_values($arr)); 
+      return array_combine(range($start_index, count($arr) + ($start_index - 1)), array_values($arr)); 
     }
 }
