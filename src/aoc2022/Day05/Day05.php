@@ -26,7 +26,7 @@ final class Day05
             }
         }
 
-        return $this->getWord();
+        return $this->word();
     }
 
     public function secondTask(): string
@@ -35,7 +35,7 @@ final class Day05
             $this->stacks[$order->to()]->pushMultiple($this->stacks[$order->from()]->popMultiple($order->count()));
         }
 
-        return $this->getWord();
+        return $this->word();
     }
 
     /*
@@ -121,7 +121,7 @@ final class Day05
         return substr($input, 1, 1);
     }
 
-    private function getWord(): string
+    private function word(): string
     {
         $word = '';
         foreach ($this->stacks as $stack) {
