@@ -78,8 +78,8 @@ final class Day03
         return $this->reindex($letters, 1);
     }
 
-    private function reindex ($arr, $start_index): array
+    private function reindex (array $arr, int $startIndex): array
     {
-      return array_combine(range($start_index, count($arr) + ($start_index - 1)), array_values($arr)); 
+      return array_combine(range($startIndex, count($arr) + ($startIndex - 1)), array_values($arr)); 
     }
 }
