@@ -61,10 +61,6 @@ final class Graph
             }
         }
 
-        foreach($this->paths as $path) {
-          #  var_dump(implode(',', $path));
-        }
-
         return $this->paths;
     }
 

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\unit\aoc2022Test\Day05Test;
+namespace Tests\unit\aoc2022Test;
 
 use Generator;
 use PHPUnit\Framework\TestCase;
