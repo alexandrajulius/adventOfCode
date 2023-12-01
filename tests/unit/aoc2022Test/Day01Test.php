@@ -8,6 +8,7 @@ use Generator;
 use PHPUnit\Framework\TestCase;
 use aoc2022\Day01\Day01;
 
+
 final class Day01Test extends TestCase
 {
     /**

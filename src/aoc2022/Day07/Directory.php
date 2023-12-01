@@ -123,7 +123,7 @@ final class Directory {
         $size = 0;
         if (!empty($files)) {
             foreach ($files as $file) {
-                $size += $file->size();
+                $size += $file->size();
             }
         }
 
