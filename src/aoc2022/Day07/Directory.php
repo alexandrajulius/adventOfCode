@@ -82,9 +82,22 @@ final class Directory {
 
     public function getSizes(): array
     {            
-        $nestedSizes = $this->searchTreeForSizes($this->dirs);
+        $sizes = [];
+        $size = 0;
+        if (!empty($files)) {
+            foreach ($files as $file) {
+                $size += $file->size();
+            }
+        }
 
-        return $this->flatten($nestedSizes);
+        foreach ($this->dirs() as $dir) {
+            if (!empty($dir->dirs())) {
+                $sizes[] = $dir->getSizes($dir->dirs());
+            }
+        }
+       # $nestedSizes = $this->searchTreeForSizes($this->dirs);
+
+        return $this->flatten($sizes);
     }
 
     private function searchTreeForSizes(array $tree): array 
@@ -110,7 +123,7 @@ final class Directory {
         $size = 0;
         if (!empty($files)) {
             foreach ($files as $file) {
-                $size += $file->size();
+                $size += $file->size();
             }
         }
 

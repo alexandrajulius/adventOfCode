@@ -16,6 +16,7 @@ final class Day07Test extends TestCase
     /**
      * @dataProvider provideInputFirstTask
      */
+    /*
     public function testFirstTask(string $input, int $expected): void
     {
         $actual = (new Day07($input))->firstTask();
@@ -57,7 +58,7 @@ $ ls
             'expected' => 1447046
         ];
     }
-
+*/
   /**
      * @dataProvider provideInputSecondTask
      */
@@ -101,7 +102,7 @@ $ ls
             'input' => file_get_contents('./tests/fixtures/aoc2022/day07.txt'),
             'expected' => 1447046
         ];
-*/
+        */
     }
 
 

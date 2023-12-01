@@ -31,18 +31,22 @@ final class Day07
     public function secondTask(): int
     {   
         $this->createFileTree();
+        $rootSize = $this->fileTree->getSize();
+
         $dirSizes = $this->fileTree->getSizes();
-        var_dump($dirSizes);
-        $overallSize = end($dirSizes);
-        $required = 70000000 - $overallSize;
-      dump($dirSizes);
+        $dirSizes[] = $rootSize;
+
+        $leftSpace = 70000000 - $rootSize;
+        $toRemove = 30000000 - $leftSpace;
+var_dump($toRemove);
+dump($dirSizes);
         $underThreshold = [];
-        foreach ($dirSizes as $dirSize) {
-            if ($dirSize > (30000000 - $overallSize)) {
-                $underThreshold[] = $dirSize;
+        foreach ($dirSizes as $size) {
+            if ($size > $toRemove) {
+                $underThreshold[] = $size;
             }
         }
-dump($underThreshold);
+#dump($underThreshold);
         return min($underThreshold);
     }
 
