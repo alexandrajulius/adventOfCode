@@ -11,7 +11,7 @@ use aoc2023\Day02\Day02;
 final class Day02Test extends TestCase
 {
     /**
-     * //@dataProvider provideInputFirstTask
+     * @dataProvider provideInputFirstTask
      */
     public function testFirstTask(string $input, int $expected): void
     {

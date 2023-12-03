@@ -8,7 +8,7 @@ final class Day02
 {
     public function firstTask(string $input): int
     {
-        $formatedInput = $this->getGameSetsAsArray($input);
+        $formatedInput = $this->toArray($input);
         $score = 0;
         foreach ($formatedInput as $key => $line) {
             $game = Game::from($line);
@@ -23,7 +23,7 @@ final class Day02
 
     public function secondTask(string $input): int
     {
-        $formatedInput = $this->getGameSetsAsArray($input);
+        $formatedInput = $this->toArray($input);
         $setPowers = [];
         foreach ($formatedInput as $key => $line) {
             $game = Game::from($line);
@@ -36,7 +36,7 @@ final class Day02
     /**
      * @return string[]|bool
      */
-    private function getGameSetsAsArray(string $input): array
+    private function toArray(string $input): array
     {
         $trimmed = preg_replace('/[ ]{2,}|[\t]/', '', trim($input));
 

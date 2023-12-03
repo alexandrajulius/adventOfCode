@@ -8,7 +8,7 @@ final class Day01
 { 
     public function firstTask(string $input): int
     {
-        $calibrationDoc = $this->getArrayOfStrings($input);
+        $calibrationDoc = $this->toArray($input);
         $calibrationValues = [];
        
         foreach ($calibrationDoc as $line) {            
@@ -26,7 +26,7 @@ final class Day01
 
     public function secondTask(string $input): int
     {
-        $calibrationDoc = $this->getArrayOfStrings($input);
+        $calibrationDoc = $this->toArray($input);
         $calibrationValues = [];
         foreach ($calibrationDoc as $line) {            
             $wordMap = Wordmap::from($line);
@@ -39,7 +39,7 @@ final class Day01
     /**
      * @return string[]|bool
      */
-    private function getArrayOfStrings(string $input): array
+    private function toArray(string $input): array
     {
         $trimmed = preg_replace('/[ ]{2,}|[\t]/', '', trim($input));
 
