@@ -21,58 +21,40 @@ final class Matrix {
     public function getPartNumbers(): array
     {
         $partNumbers = [];
+    
         foreach ($this->lines as $key => $line) {
-            if ($this->isFirstLine($key)) {  
-                $nextLine = $this->lines[$key + 1];
-                foreach ($line->digits as $index => $digitEntry) {
-                    $digit = key($digitEntry);
-                    $digitIndexStart = array_pop(array_reverse($digitEntry[$digit]));
-                    $digitIndexEnd = array_pop($digitEntry[$digit]);
-                
-                    $isAdjacentWithinLine = $this->isAdjacentToLine($line->symbols, $digitIndexStart, $digitIndexEnd);
-                    $isAdjacentToNextLine = $this->isAdjacentToLine($nextLine->symbols, $digitIndexStart, $digitIndexEnd);
-                    if ($isAdjacentWithinLine || $isAdjacentToNextLine) {
-                        $partNumbers[] = $digit;
-                        $line->digits[$index]['isPartNumber'] = true;
-                    }
+            $previousLine = $key > 0 ? $this->lines[$key - 1] : null;
+            $nextLine = $key < count($this->lines) - 1 ? $this->lines[$key + 1] : null;
+    
+            foreach ($line->digits as $index => $digitEntry) {
+                $digit = key($digitEntry);
+                $digitIndexStart = array_pop(array_reverse($digitEntry[$digit]));
+                $digitIndexEnd = array_pop($digitEntry[$digit]);
+    
+                $isAdjacentWithinLine = $this->isAdjacentToLine($line->symbols, $digitIndexStart, $digitIndexEnd);
+                $isAdjacentToPreviousLine = $previousLine && $this->isAdjacentToLine($previousLine->symbols, $digitIndexStart, $digitIndexEnd);
+                $isAdjacentToNextLine = $nextLine && $this->isAdjacentToLine($nextLine->symbols, $digitIndexStart, $digitIndexEnd);
+    
+                if ($this->isFirstLine($key) && ($isAdjacentWithinLine || $isAdjacentToNextLine)) {
+                    $partNumbers[] = $digit;
+                    $line->digits[$index]['isPartNumber'] = true;
                 }
-            }
-            if ($this->isLastLine($key)) {
-                $previousLine = $this->lines[$key - 1];
-                foreach ($line->digits as $index => $digitEntry) {
-                    $digit = key($digitEntry);
-                    $digitIndexStart = array_pop(array_reverse($digitEntry[$digit]));
-                    $digitIndexEnd = array_pop($digitEntry[$digit]);
-                
-                    $isAdjacentWithinLine = $this->isAdjacentToLine($line->symbols, $digitIndexStart, $digitIndexEnd);
-                    $isAdjacentToPreviousLine = $this->isAdjacentToLine($previousLine->symbols, $digitIndexStart, $digitIndexEnd);
-                    if ($isAdjacentWithinLine || $isAdjacentToPreviousLine) {
-                        $partNumbers[] = $digit;
-                        $line->digits[$index]['isPartNumber'] = true;
-                    }
+    
+                if ($this->isLastLine($key) && ($isAdjacentWithinLine || $isAdjacentToPreviousLine)) {
+                    $partNumbers[] = $digit;
+                    $line->digits[$index]['isPartNumber'] = true;
                 }
-            }
-            if ($this->otherLines($key)) {
-                $previousLine = $this->lines[$key - 1];
-                $nextLine = $this->lines[$key + 1];
-                foreach ($line->digits as $index => $digitEntry) {
-                    $digit = key($digitEntry);
-                    $digitIndexStart = array_pop(array_reverse($digitEntry[$digit]));
-                    $digitIndexEnd = array_pop($digitEntry[$digit]);
-               
-                    $isAdjacentWithinLine = $this->isAdjacentToLine($line->symbols, $digitIndexStart, $digitIndexEnd);
-                    $isAdjacentToPreviousLine = $this->isAdjacentToLine($previousLine->symbols, $digitIndexStart, $digitIndexEnd);
-                    $isAdjacentToNextLine = $this->isAdjacentToLine($nextLine->symbols, $digitIndexStart, $digitIndexEnd);
-                    if ($isAdjacentWithinLine || $isAdjacentToPreviousLine || $isAdjacentToNextLine) {
-                        $partNumbers[] = $digit;
-                        $line->digits[$index]['isPartNumber'] = true;
-                    }
+    
+                if ($this->otherLines($key) && ($isAdjacentWithinLine || $isAdjacentToPreviousLine || $isAdjacentToNextLine)) {
+                    $partNumbers[] = $digit;
+                    $line->digits[$index]['isPartNumber'] = true;
                 }
             }
         }
-
+    
         return $partNumbers;
     }
+    
 
     public function getGearRatio(): array
     {
@@ -81,49 +63,34 @@ final class Matrix {
         $asterisks = [];
         foreach ($this->lines as $key => $line) {
             if ($this->otherLines($key)) {
-                $previousLine = $this->lines[$key - 1];
-                $nextLine = $this->lines[$key + 1];
+                $previousLine = $this->lines[$key - 1] ?? null;
+                $nextLine = $this->lines[$key + 1] ?? null;
                 foreach ($line->asterisks as $asteriskIndex) {
                     $asterisk = new Asterisk($asteriskIndex, 0, []);
-                    
-                    foreach ($line->digits as $digitIndexes) {
-                        $digit = array_key_first($digitIndexes);
-                        $digitIndexStart = array_pop(array_reverse($digitIndexes[$digit]));
-                        $digitIndexEnd = array_pop($digitIndexes[$digit]);
-                        if ($this->isAdjacentToSymbol($asteriskIndex, $digitIndexStart, $digitIndexEnd)
-                            && $digitIndexes['isPartNumber'] === true) {
-                                $asterisk->adjacentPartNumbersCount += 1;
-                                $asterisk->adjacentPartNumbers[] = $digit;
-                        }
-                    }
-
-                    foreach ($previousLine->digits as $digitIndexes) {
-                        $digit = array_key_first($digitIndexes);
-                        $digitIndexStart = array_pop(array_reverse($digitIndexes[$digit]));
-                        $digitIndexEnd = array_pop($digitIndexes[$digit]);
-                        if ($this->isAdjacentToSymbol($asteriskIndex, $digitIndexStart, $digitIndexEnd)
-                            && $digitIndexes['isPartNumber'] === true) {
-                                $asterisk->adjacentPartNumbersCount += 1;
-                                $asterisk->adjacentPartNumbers[] = $digit;
-                        }
-                    }
-
-                    foreach ($nextLine->digits as $digitIndexes) {
-                        $digit = array_key_first($digitIndexes);
-                        $digitIndexStart = array_pop(array_reverse($digitIndexes[$digit]));
-                        $digitIndexEnd = array_pop($digitIndexes[$digit]);
-                        if ($this->isAdjacentToSymbol($asteriskIndex, $digitIndexStart, $digitIndexEnd)
-                            && $digitIndexes['isPartNumber'] === true) {
-                                $asterisk->adjacentPartNumbersCount += 1;
-                                $asterisk->adjacentPartNumbers[] = $digit;
-                        }
-                    }
+                    $this->processAsterisk($asterisk, $line->digits);
+                    $this->processAsterisk($asterisk, $previousLine->digits);
+                    $this->processAsterisk($asterisk, $nextLine->digits);
+                  
                     $asterisks[] = $asterisk;
                 }
             }
         }
 
         return $asterisks;
+    }
+
+    private function processAsterisk(Asterisk $asterisk, array $digits): void
+    {
+        foreach ($digits as $digitIndexes) {
+            $digit = array_key_first($digitIndexes);
+            $digitIndexStart = array_pop(array_reverse($digitIndexes[$digit]));
+            $digitIndexEnd = array_pop($digitIndexes[$digit]);
+            if ($this->isAdjacentToSymbol($asterisk->index, $digitIndexStart, $digitIndexEnd)
+                && $digitIndexes['isPartNumber'] === true) {
+                    $asterisk->adjacentPartNumbersCount += 1;
+                    $asterisk->adjacentPartNumbers[] = $digit;
+            }
+        }
     }
 
     private function isFirstLine($key): bool

@@ -38,8 +38,6 @@ final class Day02
      */
     private function toArray(string $input): array
     {
-        $trimmed = preg_replace('/[ ]{2,}|[\t]/', '', trim($input));
-
-        return explode(PHP_EOL, $trimmed);
+        return explode(PHP_EOL, preg_replace('/[ ]{2,}|[\t]/', '', trim($input)));
     }
 }

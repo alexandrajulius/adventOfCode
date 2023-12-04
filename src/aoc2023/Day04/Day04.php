@@ -51,13 +51,10 @@ final class Day04
      */
     private function toArray(string $input): array
     {
-        $toArr = explode(PHP_EOL, $input);
-        $raw = [];
-        foreach ($toArr as $item) {
-            $raw[] = substr($item, strpos($item, ':') + 2);
-        }
-  
-        return $raw;
+        return array_map(
+            fn($item) => substr($item, strpos($item, ':') + 2),
+            explode(PHP_EOL, $input)
+        );
     }
 
     private function getScore(int $winningGameNumbersCount): int
@@ -72,9 +69,8 @@ final class Day04
     private function updateCardDeck(int $i, int $count): void
     {
         if (!isset($this->cardDeck[$i])) {
-            $copy = Scratchcard::from($this->originalCards[$i]->original);
-            $copy->countInDeck = 1;
-            $this->cardDeck[$i] = $copy;  
+            $this->cardDeck[$i] = clone $this->originalCards[$i];
+            $this->cardDeck[$i]->countInDeck = 1;
         } else {
             $this->increaseCardCount($i, $count);
         }    
@@ -87,11 +83,10 @@ final class Day04
 
     private function cardCountsSum(): int
     {
-        $cardcounts = 0;
-        foreach ($this->cardDeck as $card) {
-            $cardcounts += $card->countInDeck;
-        }
-
-        return $cardcounts;
+        return array_reduce(
+            $this->cardDeck,
+            fn($sum, $card) => $sum + $card->countInDeck,
+            0
+        );
     }
 }
