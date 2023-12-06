@@ -1,62 +1,115 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Tests\unit\aoc2020Test\Day10Test;
 
-use aoc2020\Day10\Day10;
 use Generator;
-use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
+use aoc2020\Day10\Day10;
 
 final class Day10Test extends TestCase
 {
-    public function testCanBeInstantiated(): void
-    {
-        Assert::assertInstanceOf(Day10::class, new Day10());
-    }
-
     /**
-     * @dataProvider provideNumbersAndRangeSecondPuzzle
+     * @dataProvider provideInputFirstTask
      */
-    public function testFindsContiguousSetOfInvalidNumbers(string $input, int $expected): void
+    public function testFirstTask(string $input, int $expected): void
     {
-        $actual = (new Day10())->findContiguousSetOfInvalidNumbers($input);
-
+        $actual = (new Day10)->firstTask($input);
+    
         self::assertEquals($expected, $actual);
     }
 
-    public function provideNumbersAndRangeSecondPuzzle(): Generator
+    public static function provideInputFirstTask(): Generator
     {
-        yield 'For input a' => [
-            'input' => '35
-20
-15
-25
-47
-40
-62
-55
-65
-95
-102
-117
-150
-182
-127
-219
-299
-277
-309
-576',
-            'range' => 5,
-            'inValidNo' => 62
+        
+        yield 'Sample input' => [
+            'input' => '16
+            10
+            15
+            5
+            1
+            11
+            7
+            19
+            6
+            12
+            4',
+            'expected' => 35
         ];
+        
+        yield 'Final input' => [
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day10.txt'),
+            'expected' => 3000
+        ];    
+    }
 
-        yield 'For input final' => [
-            'input' => file_get_contents('./tests/fixtures/aoc2020/day09.txt'),
-            'range' => 25,
-            'inValidNo' => 70672245
+    /**
+     * @dataProvider provideInputSecondTask
+     */
+    public function testSecondTask(string $input, int $expected): void
+    {
+        $actual = (new Day10)->secondTask($input);
+    
+        self::assertEquals($expected, $actual);
+    }
+
+    public static function provideInputSecondTask(): Generator
+    {
+        yield 'Sample input' => [
+            'input' => '16
+            10
+            15
+            5
+            1
+            11
+            7
+            19
+            6
+            12
+            4',
+            'expected' => 8
         ];
+        
+        yield 'Second sample input' => [
+            'input' => '28
+            33
+            18
+            42
+            31
+            14
+            46
+            20
+            48
+            47
+            24
+            23
+            49
+            45
+            19
+            38
+            39
+            11
+            1
+            32
+            25
+            35
+            8
+            17
+            7
+            9
+            4
+            2
+            34
+            10
+            3',
+            'expected' => 19208
+        ];
+        /*
+        yield 'Final input' => [
+            'input' => file_get_contents('./tests/fixtures/aoc2020/day10.txt'),
+            'expected' => 3000
+        ];    
+        */
     }
 }

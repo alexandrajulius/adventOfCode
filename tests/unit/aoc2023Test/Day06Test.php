@@ -13,7 +13,6 @@ final class Day06Test extends TestCase
     /**
      * @dataProvider provideInputFirstTask
      */
-    /*
      public function testFirstTask(string $input, int $expected): void
     {
         $actual = (new Day06)->firstTask($input);
@@ -36,9 +35,8 @@ Distance:   215   1051   2147   1005',
             'expected' => 1084752
         ];    
     }
-    */
 
-     /**
+    /**
      * @dataProvider provideInputSecondTask
      */
     public function testSecondTask(string $input, int $expected): void
