@@ -6,7 +6,7 @@ namespace aoc2023\Day03;
 
 final class Day03
 {
-    public function firstTask(string $input): int
+    public function partOne(string $input): int
     {
         $matrix = Matrix::from($this->toArray($input));
         $partNumbers = $matrix->getPartNumbers();
@@ -14,7 +14,7 @@ final class Day03
         return array_sum($partNumbers);
     }
 
-    public function secondTask(string $input): int
+    public function partTwo(string $input): int
     {
         $matrix = Matrix::from($this->toArray($input));
         $asterisks = $matrix->getGearRatio();

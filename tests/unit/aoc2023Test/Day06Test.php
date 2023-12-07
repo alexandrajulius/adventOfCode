@@ -11,25 +11,25 @@ use aoc2023\Day06\Day06;
 final class Day06Test extends TestCase
 {
     /**
-     * @dataProvider provideInputFirstTask
+     * @dataProvider provideInputPartOne
      */
-     public function testFirstTask(string $input, int $expected): void
+     public function testPartOne(string $input, int $expected): void
     {
-        $actual = (new Day06)->firstTask($input);
+        $actual = (new Day06)->partOne($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputFirstTask(): Generator
+    public static function provideInputPartOne(): Generator
     {
         
-        yield 'Sample input' => [
+        yield 'sample input' => [
             'input' => 'Time:      7  15   30
             Distance:  9  40  200',
             'expected' => 288
         ];
         
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => 'Time:        40     70     98     79
 Distance:   215   1051   2147   1005',
             'expected' => 1084752
@@ -37,25 +37,25 @@ Distance:   215   1051   2147   1005',
     }
 
     /**
-     * @dataProvider provideInputSecondTask
+     * @dataProvider provideInputPartTwo
      */
-    public function testSecondTask(string $input, int $expected): void
+    public function testPartTwo(string $input, int $expected): void
     {
-        $actual = (new Day06)->secondTask($input);
+        $actual = (new Day06)->partTwo($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputSecondTask(): Generator
+    public static function provideInputPartTwo(): Generator
     {
         
-        yield 'Sample input' => [
+        yield 'sample input' => [
             'input' => 'Time:      7  15   30
             Distance:  9  40  200',
             'expected' => 71503
         ];
         
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => 'Time:        40     70     98     79
 Distance:   215   1051   2147   1005',
             'expected' => 28228952

@@ -11,16 +11,16 @@ use aoc2023\Day05\Day05;
 final class Day05Test extends TestCase
 {
     /**
-     * @dataProvider provideInputFirstTask
+     * @dataProvider provideInputPartOne
      */
-     public function testFirstTask(string $input, int $expected): void
+     public function testPartOne(string $input, int $expected): void
     {
-        $actual = (new Day05)->firstTask($input);
+        $actual = (new Day05)->partOne($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputFirstTask(): Generator
+    public static function provideInputPartOne(): Generator
     {
         
         yield 'Sample input' => [

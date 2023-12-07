@@ -11,18 +11,18 @@ use aoc2023\Day01\Day01;
 final class Day01Test extends TestCase
 {
     /**
-     * @dataProvider provideInputFirstTask
+     * @dataProvider provideInputPartOne
      */
-    public function testFirstTask(string $input, int $expected): void
+    public function testPartOne(string $input, int $expected): void
     {
-        $actual = (new Day01)->firstTask($input);
+        $actual = (new Day01)->partOne($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputFirstTask(): Generator
+    public static function provideInputPartOne(): Generator
     {
-        yield 'Dummy input' => [
+        yield 'sample input' => [
             'input' => '1abc2
             pqr3stu8vwx
             a1b2c3d4e5f
@@ -30,25 +30,25 @@ final class Day01Test extends TestCase
             'expected' => 142
         ];
 
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day01.txt'),
             'expected' => 54951
         ];
     }
 
     /**
-     * @dataProvider provideInputSecondTask
+     * @dataProvider provideInputPartTwo
      */
-    public function testSecondTask(string $input, int $expected): void
+    public function testPartTwo(string $input, int $expected): void
     {
-        $actual = (new Day01)->secondTask($input);
+        $actual = (new Day01)->partTwo($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputSecondTask(): Generator
+    public static function provideInputPartTwo(): Generator
     {
-        yield 'Dummy input' => [
+        yield 'sample input' => [
             'input' => 'two1nine
             eightwothree
             abcone2threexyz
@@ -60,7 +60,7 @@ final class Day01Test extends TestCase
             'expected' => 293
         ];
 
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day01_2nd_task.txt'),
             'expected' => 55218
         ];

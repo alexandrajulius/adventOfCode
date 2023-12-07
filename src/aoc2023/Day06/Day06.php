@@ -9,7 +9,7 @@ final class Day06
     public array $seeds = [];
     public array $maps = [];
 
-    public function firstTask(string $input): int
+    public function partOne(string $input): int
     {
         $raw = $this->getFirstTaskInput($input);
         $racesWinCount = [];
@@ -20,7 +20,7 @@ final class Day06
         return array_product($racesWinCount);
     }
 
-    public function secondTask(string $input): int
+    public function partTwo(string $input): int
     {
         $raw = $this->getRaw($input);
         $time = $this->getSecondTaskInput($raw[0]);

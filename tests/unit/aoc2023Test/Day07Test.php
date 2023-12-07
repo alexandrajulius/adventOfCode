@@ -11,18 +11,18 @@ use aoc2023\Day07\Day07;
 final class Day07Test extends TestCase
 {
     /**
-     * @dataProvider provideInputFirstTask
+     * @dataProvider provideInputPartOne
      */
-     public function testFirstTask(string $input, int $expected): void
+     public function testPartOne(string $input, int $expected): void
     {
-        $actual = (new Day07)->firstTask($input);
+        $actual = (new Day07)->partOne($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputFirstTask(): Generator
+    public static function provideInputPartOne(): Generator
     {
-         yield 'Sample input' => [
+         yield 'sample input' => [
             'input' => '32T3K 765
             T55J5 684
             KK677 28
@@ -31,25 +31,25 @@ final class Day07Test extends TestCase
             'expected' => 6440
         ];
        
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day07.txt'),
             'expected' => 255048101
         ]; 
     }
 
     /**
-     * @dataProvider provideInputSecondTask
+     * @dataProvider provideInputPartTwo
      */
-    public function testSecondTask(string $input, int $expected): void
+    public function testPartTwo(string $input, int $expected): void
     {
-        $actual = (new Day07)->secondTask($input);
+        $actual = (new Day07)->partTwo($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputSecondTask(): Generator
+    public static function provideInputPartTwo(): Generator
     {
-        yield 'Sample input' => [
+        yield 'sample input' => [
             'input' => '32T3K 765
             T55J5 684
             KK677 28
@@ -58,7 +58,7 @@ final class Day07Test extends TestCase
             'expected' => 5905
         ];
        
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day07.txt'),
             'expected' => 253718286
         ];    

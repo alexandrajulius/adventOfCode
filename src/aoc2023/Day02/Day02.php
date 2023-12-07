@@ -6,7 +6,7 @@ namespace aoc2023\Day02;
 
 final class Day02
 {
-    public function firstTask(string $input): int
+    public function partOne(string $input): int
     {
         $formatedInput = $this->toArray($input);
         $score = 0;
@@ -21,7 +21,7 @@ final class Day02
         return $score;
     }
 
-    public function secondTask(string $input): int
+    public function partTwo(string $input): int
     {
         $formatedInput = $this->toArray($input);
         $setPowers = [];

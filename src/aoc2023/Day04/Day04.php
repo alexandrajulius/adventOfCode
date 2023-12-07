@@ -9,7 +9,7 @@ final class Day04
     public array $originalCards = [];
     public array $cardDeck = [];
 
-    public function firstTask(string $input): int
+    public function partOne(string $input): int
     {
         $scores = [];
         foreach ($this->toArray($input) as $line) {
@@ -20,7 +20,7 @@ final class Day04
         return array_sum($scores);
     }
 
-    public function secondTask(string $input): int
+    public function partTwo(string $input): int
     {
         foreach ($this->toArray($input) as $key => $line) {
             $card = Scratchcard::from($line);

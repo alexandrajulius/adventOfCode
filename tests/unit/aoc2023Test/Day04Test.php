@@ -11,19 +11,19 @@ use aoc2023\Day04\Day04;
 final class Day04Test extends TestCase
 {
     /**
-     * @dataProvider provideInputFirstTask
+     * @dataProvider provideInputPartOne
      */
      public function testFirstTask(string $input, int $expected): void
     {
-        $actual = (new Day04)->firstTask($input);
+        $actual = (new Day04)->partOne($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputFirstTask(): Generator
+    public static function provideInputPartOne(): Generator
     {
         
-        yield 'Sample input' => [
+        yield 'sample input' => [
             'input' => 'Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
             Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
             Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1
@@ -33,25 +33,25 @@ final class Day04Test extends TestCase
             'expected' => 13
         ];
         
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day04.txt'),
             'expected' => 20407
         ]; 
     }
 
      /**
-     * @dataProvider provideInputSecondTask
+     * @dataProvider provideInputPartTwo
      */
-    public function testSecondTask(string $input, int $expected): void
+    public function testPartTwo(string $input, int $expected): void
     {
-        $actual = (new Day04)->secondTask($input);
+        $actual = (new Day04)->partTwo($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputSecondTask(): Generator
+    public static function provideInputPartTwo(): Generator
     {
-        yield 'Sample input' => [
+        yield 'sample input' => [
             'input' => 'Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
             Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
             Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1
@@ -61,7 +61,7 @@ final class Day04Test extends TestCase
             'expected' => 30
         ];
         
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day04.txt'),
             'expected' => 23027585
         ];  

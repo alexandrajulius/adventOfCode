@@ -6,7 +6,7 @@ namespace aoc2023\Day01;
 
 final class Day01
 { 
-    public function firstTask(string $input): int
+    public function partOne(string $input): int
     {
         $calibrationDoc = $this->toArray($input);
         $calibrationValues = [];
@@ -24,7 +24,7 @@ final class Day01
         return array_sum($calibrationValues);
     }
 
-    public function secondTask(string $input): int
+    public function partTwo(string $input): int
     {
         $calibrationDoc = $this->toArray($input);
         $calibrationValues = [];

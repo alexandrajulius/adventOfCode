@@ -11,18 +11,18 @@ use aoc2023\Day02\Day02;
 final class Day02Test extends TestCase
 {
     /**
-     * @dataProvider provideInputFirstTask
+     * @dataProvider provideInputPartOne
      */
-    public function testFirstTask(string $input, int $expected): void
+    public function testPartOne(string $input, int $expected): void
     {
-        $actual = (new Day02)->firstTask($input);
+        $actual = (new Day02)->partOne($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputFirstTask(): Generator
+    public static function provideInputPartOne(): Generator
     {
-        yield 'Dummy input' => [
+        yield 'sample input' => [
             'input' => 'Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
             Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
             Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
@@ -31,25 +31,25 @@ final class Day02Test extends TestCase
             'expected' => 8
         ];
 
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day02.txt'),
             'expected' => 2085
         ];
     }  
 
    /**
-     * @dataProvider provideInputSecondTask
+     * @dataProvider provideInputPartTwo
      */
-    public function testSecondTask(string $input, int $expected): void
+    public function testPartTwo(string $input, int $expected): void
     {
-        $actual = (new Day02)->secondTask($input);
+        $actual = (new Day02)->partTwo($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputSecondTask(): Generator
+    public static function provideInputPartTwo(): Generator
     {
-        yield 'Dummy input' => [
+        yield 'sample input' => [
             'input' => 'Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
             Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
             Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
@@ -58,7 +58,7 @@ final class Day02Test extends TestCase
             'expected' => 2286
         ];
 
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day02.txt'),
             'expected' => 79315
         ];

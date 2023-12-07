@@ -17,7 +17,7 @@ final class Day05
     public array $seeds = [];
     public array $maps = [];
 
-    public function firstTask(string $input): float
+    public function partOne(string $input): float
     {
         $raw = $this->toArray($input);
         $this->seeds = $this->getSeeds($raw[0]);

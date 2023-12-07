@@ -9,32 +9,20 @@ final class Day07
     public array $seeds = [];
     public array $maps = [];
 
-    public function firstTask(string $input): int
+    public function partOne(string $input): int
     {
         $raw = $this->getRaw($input);
         $hands = array_map(fn($item) => Hand::from($item), $raw);
-        $ranked = (new Game($hands))->rank();
 
-        $totalWinnings = [];
-        foreach ($ranked as $key => $hand) {
-            $totalWinnings[] = $hand->bid * ($key + 1);
-        }
-   
-        return array_sum($totalWinnings);
+        return array_sum($this->getTotalWinnings((new Game($hands))->rank()));
     }
 
-    public function secondTask(string $input): int
+    public function partTwo(string $input): int
     {
         $raw = $this->getRaw($input);
         $hands = array_map(fn($item) => HandPartTwo::from($item), $raw);
-        $ranked = (new Game($hands))->rank();
-
-        $totalWinnings = [];
-        foreach ($ranked as $key => $hand) {
-            $totalWinnings[] = $hand->bid * ($key + 1);
-        }
    
-        return array_sum($totalWinnings);
+        return array_sum($this->getTotalWinnings((new Game($hands))->rank()));
     }
    
     private function getRaw(string $input): array
@@ -48,4 +36,14 @@ final class Day07
 
         return $rawCardsAndBids;
     } 
+
+    private function getTotalWinnings(array $ranked): array
+    {
+        $totalWinnings = [];
+        foreach ($ranked as $key => $hand) {
+            $totalWinnings[] = $hand->bid * ($key + 1);
+        }
+
+        return $totalWinnings;
+    }
 }

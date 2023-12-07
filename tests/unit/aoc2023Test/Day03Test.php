@@ -11,19 +11,18 @@ use aoc2023\Day03\Day03;
 final class Day03Test extends TestCase
 {
     /**
-     * @dataProvider provideInputFirstTask
+     * @dataProvider provideInputPartOne
      */
-    public function testFirstTask(string $input, int $expected): void
+    public function testPartOne(string $input, int $expected): void
     {
-        $actual = (new Day03)->firstTask($input);
+        $actual = (new Day03)->partOne($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputFirstTask(): Generator
+    public static function provideInputPartOne(): Generator
     {
-        
-        yield 'Dummy input' => [
+        yield 'sample input' => [
             'input' => '467..114..
             ...*......
             ..35..633.
@@ -38,26 +37,26 @@ final class Day03Test extends TestCase
             'expected' => 4364
         ];
         
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day03.txt'),
             'expected' => 535351
         ];
     }
 
     /**
-     * @dataProvider provideInputSecondTask
+     * @dataProvider provideInputPartTwo
      */
-    public function testSecondTask(string $input, int $expected): void
+    public function testPartTwo(string $input, int $expected): void
     {
-        $actual = (new Day03)->secondTask($input);
+        $actual = (new Day03)->partTwo($input);
     
         self::assertEquals($expected, $actual);
     }
 
-    public static function provideInputSecondTask(): Generator
+    public static function provideInputPartTwo(): Generator
     {
         
-        yield 'Dummy input' => [
+        yield 'sample input' => [
             'input' => '467..114..
             ...*......
             ..35..633.
@@ -71,7 +70,7 @@ final class Day03Test extends TestCase
             'expected' => 467835
         ];
         
-        yield 'Final input' => [
+        yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2023/day03.txt'),
             'expected' => 87287096
         ];
