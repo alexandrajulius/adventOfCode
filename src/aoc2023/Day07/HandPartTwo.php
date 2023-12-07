@@ -32,7 +32,6 @@ final class HandPartTwo extends Hand {
 
     public static function determineTypeWithJoker(Hand $hand): void
     {
-
         switch ($hand->jokerCount) {
             case 5:
                 self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
@@ -76,13 +75,4 @@ final class HandPartTwo extends Hand {
                 self::determineType($hand);
         }
     }
-
-    private static function setTypeAndStrength(Hand $hand, string $type): void
-    {
-        if ($hand->type === '' && $hand->strength === 0) {
-            $hand->type = $type;
-            $hand->strength = array_search($type, self::STRENGTH) + 1;
-        }
-    }
-
 }

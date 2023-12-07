@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace aoc2023\Day07;
 
-class Hand implements HandInterface {
+class Hand {
 
     public const FIVE_OF_A_KIND = 'Five of a kind';
     public const FOUR_OF_A_KIND = 'Four of a kind';
@@ -49,7 +49,7 @@ class Hand implements HandInterface {
         return $hand;
     }
 
-    public static function determineType(Hand $hand): void
+    protected static function determineType(Hand $hand): void
     {
         if (self::isFiveOfAKind($hand)) {
             self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
@@ -126,7 +126,7 @@ class Hand implements HandInterface {
         return $inc;
     }
 
-    private static function setTypeAndStrength(Hand $hand, string $type): void
+    protected static function setTypeAndStrength(Hand $hand, string $type): void
     {
         if ($hand->type === '' && $hand->strength === 0) {
             $hand->type = $type;
