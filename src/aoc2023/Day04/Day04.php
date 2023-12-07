@@ -72,13 +72,8 @@ final class Day04
             $this->cardDeck[$i] = clone $this->originalCards[$i];
             $this->cardDeck[$i]->countInDeck = 1;
         } else {
-            $this->increaseCardCount($i, $count);
+            $this->cardDeck[$i]->countInDeck += $count;
         }    
-    }
-
-    private function increaseCardCount(int $i, int $count): void
-    {
-        $this->cardDeck[$i]->countInDeck += $count;
     }
 
     private function cardCountsSum(): int
