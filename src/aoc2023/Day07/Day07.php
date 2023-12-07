@@ -12,7 +12,7 @@ final class Day07
     public function firstTask(string $input): int
     {
         $raw = $this->getRaw($input);
-        $hands = array_map(fn($item) => Hand::from($item, 1), $raw);
+        $hands = array_map(fn($item) => Hand::from($item), $raw);
         $ranked = (new Game($hands))->rank();
 
         $totalWinnings = [];
@@ -26,7 +26,7 @@ final class Day07
     public function secondTask(string $input): int
     {
         $raw = $this->getRaw($input);
-        $hands = array_map(fn($item) => Hand::from($item, 2), $raw);
+        $hands = array_map(fn($item) => HandPartTwo::from($item), $raw);
         $ranked = (new Game($hands))->rank();
 
         $totalWinnings = [];

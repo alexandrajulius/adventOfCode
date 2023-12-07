@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace aoc2023\Day07;
 
-final class Hand {
+class Hand implements HandInterface {
 
     public const FIVE_OF_A_KIND = 'Five of a kind';
     public const FOUR_OF_A_KIND = 'Four of a kind';
@@ -34,28 +34,23 @@ final class Hand {
     /**
      * @param string[]
      */
-    public static function from(array $rawCardsAndBids, int $puzzleCount): self
+    public static function from(array $rawCardsAndBids): self
     {
         $hand = new self();
         $hand->original = $rawCardsAndBids[0];
         $cardLabels = str_split($rawCardsAndBids[0]);
         foreach ($cardLabels as $rawCard) {
-            $hand->cardValues[] = (new Card($rawCard))->value($puzzleCount);
+            $hand->cardValues[] = (new Card($rawCard))->value();
         }
         $hand->bid = intval($rawCardsAndBids[1]);
         $hand->valueCountMap = array_count_values($hand->cardValues);
-        var_dump($hand->original);
-        var_dump($hand->valueCountMap);
-        self::type($hand);
-       var_dump($hand->type);
+        self::determineType($hand);
+        
         return $hand;
     }
 
-    private static function type(Hand $hand): void
+    public static function determineType(Hand $hand): void
     {
-
-        var_dump('count of J in hand: ' . $hand->valueCountMap[1]);
-
         if (self::isFiveOfAKind($hand)) {
             self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
         }
