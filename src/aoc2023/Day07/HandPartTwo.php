@@ -32,48 +32,48 @@ final class HandPartTwo extends Hand {
 
     public static function determineTypeWithJoker(Hand $hand): void
     {
-        if ($hand->jokerCount === 5 || $hand->jokerCount === 4) {
-            self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
-        }
-        if ($hand->jokerCount === 3) {
-            if (count($hand->valueCountMapWithoutJ) === 1) {   
+
+        switch ($hand->jokerCount) {
+            case 5:
                 self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
-            }
-            if (count($hand->valueCountMapWithoutJ) === 2) {   
-                self::setTypeAndStrength($hand, self::FOUR_OF_A_KIND);
-            }
-        }
-        if ($hand->jokerCount === 2) {
-            if (count($hand->valueCountMapWithoutJ) === 1) {   
+            case 4:
                 self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
-            }
-            if (count($hand->valueCountMapWithoutJ) === 2) {   
-                self::setTypeAndStrength($hand, self::FOUR_OF_A_KIND);
-            }
-            if (count($hand->valueCountMapWithoutJ) === 3) {   
-                self::setTypeAndStrength($hand, self::THREE_OF_A_KIND);
-            }
-        }
-        if ($hand->jokerCount === 1) {
-            if (count($hand->valueCountMapWithoutJ) === 1) {
-                self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
-            } 
-            if (count($hand->valueCountMapWithoutJ) === 2) {
-                if ($hand->valueCountMapWithoutJ[array_key_first($hand->valueCountMapWithoutJ)] === $hand->valueCountMapWithoutJ[array_key_last($hand->valueCountMapWithoutJ)]) {
-                    self::setTypeAndStrength($hand, self::FULL_HOUSE);
-                } else {
+            case 3:
+                if (count($hand->valueCountMapWithoutJ) === 1) {   
+                    self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
+                }
+                if (count($hand->valueCountMapWithoutJ) === 2) {   
                     self::setTypeAndStrength($hand, self::FOUR_OF_A_KIND);
+                }
+            case 2:
+                if (count($hand->valueCountMapWithoutJ) === 1) {   
+                    self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
+                }
+                if (count($hand->valueCountMapWithoutJ) === 2) {   
+                    self::setTypeAndStrength($hand, self::FOUR_OF_A_KIND);
+                }
+                if (count($hand->valueCountMapWithoutJ) === 3) {   
+                    self::setTypeAndStrength($hand, self::THREE_OF_A_KIND);
                 } 
-            }
-            if (count($hand->valueCountMapWithoutJ) === 3) {
-                self::setTypeAndStrength($hand, self::THREE_OF_A_KIND);
-            } 
-            if (count($hand->valueCountMapWithoutJ) === 4) {
-                self::setTypeAndStrength($hand, self::ONE_PAIR);
-            }
-        }
-        if ($hand->jokerCount === 0) {
-            self::determineType($hand);
+            case 1:
+                if (count($hand->valueCountMapWithoutJ) === 1) {
+                    self::setTypeAndStrength($hand, self::FIVE_OF_A_KIND);
+                } 
+                if (count($hand->valueCountMapWithoutJ) === 2) {
+                    if ($hand->valueCountMapWithoutJ[array_key_first($hand->valueCountMapWithoutJ)] === $hand->valueCountMapWithoutJ[array_key_last($hand->valueCountMapWithoutJ)]) {
+                        self::setTypeAndStrength($hand, self::FULL_HOUSE);
+                    } else {
+                        self::setTypeAndStrength($hand, self::FOUR_OF_A_KIND);
+                    } 
+                }
+                if (count($hand->valueCountMapWithoutJ) === 3) {
+                    self::setTypeAndStrength($hand, self::THREE_OF_A_KIND);
+                } 
+                if (count($hand->valueCountMapWithoutJ) === 4) {
+                    self::setTypeAndStrength($hand, self::ONE_PAIR);
+                }
+            case 0:
+                self::determineType($hand);
         }
     }
 
