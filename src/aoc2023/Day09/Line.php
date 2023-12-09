@@ -11,31 +11,12 @@ class Line {
     public function getNextValue(): int
     {
         $sequences = $this->buildSequences();
-
-        array_pop($sequences);
-        $revertedSequences = array_reverse($sequences);
-
         $result = 0;
-        foreach ($revertedSequences as $i => $sequence) {
-            $result += $revertedSequences[$i][count($sequence) - 1];
+        foreach ($sequences as $i => $sequence) {
+            $result += $sequences[$i][count($sequence) - 1];
         }
        
         return $result;
-    }
-
-    public function getNextValuePartTwo(): int
-    {
-        $sequences = $this->buildSequences();
-
-        array_pop($sequences);
-        $revertedSequences = array_reverse($sequences);
-
-        $nextValue = 0;
-        foreach ($revertedSequences as $i => $sequence) {
-            $nextValue = $revertedSequences[$i][0] - $nextValue;
-        }
-    
-        return $nextValue;
     }
 
     protected function buildSequences(): array
@@ -47,7 +28,9 @@ class Line {
             $sequences[] = $nextSequence;
             $currentSequence = $nextSequence;
         }
-        return $sequences;
+        array_pop($sequences);
+
+        return array_reverse($sequences);
     }
 
     protected function getDiffs(array $line): array
@@ -63,10 +46,5 @@ class Line {
     protected function containsOnlyZeros(array $sequence): bool
     {
         return $sequence[0] === 0 && count(array_count_values($sequence)) === 1;
-    }
-
-    protected function calculateLastValue(int $foo, int $bar): int
-    {
-        return $foo + $bar;
     }
 }

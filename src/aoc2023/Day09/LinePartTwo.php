@@ -11,12 +11,9 @@ final class LinePartTwo extends Line {
     public function getNextValue(): int
     {
         $sequences = $this->buildSequences();
-        array_pop($sequences);
-        $revertedSequences = array_reverse($sequences);
-
         $nextValue = 0;
-        foreach ($revertedSequences as $i => $sequence) {
-            $nextValue = $revertedSequences[$i][0] - $nextValue;
+        foreach ($sequences as $i => $sequence) {
+            $nextValue = $sequences[$i][0] - $nextValue;
         }
     
         return $nextValue;

@@ -14,13 +14,6 @@ final class OasisReportPartTwo extends OasisReport {
 
         return $report;
     }
-    
-    public function nextValuesSum(): int
-    {
-        return array_sum(array_map(function ($line) {
-            return $line->getNextValuePartTwo();
-        }, $this->valueHistory));
-    }
 
     protected static function getValueHistory(string $input): array
     {

@@ -26,13 +26,6 @@ class OasisReport {
         }, $this->valueHistory));
     }
 
-    public function nextValuesSumPartTwo(): int
-    {
-        return array_sum(array_map(function ($line) {
-            return $line->getNextValuePartTwo();
-        }, $this->valueHistory));
-    }
-
     protected static function getValueHistory(string $input): array
     {
         $history = [];
