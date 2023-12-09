@@ -13,7 +13,7 @@ final class Day06Test extends TestCase
     /**
      * @dataProvider provideInputPartOne
      */
-     public function testPartOne(string $input, int $expected): void
+    public function testPartOne(string $input, int $expected): void
     {
         $actual = (new Day06)->partOne($input);
     
@@ -21,8 +21,7 @@ final class Day06Test extends TestCase
     }
 
     public static function provideInputPartOne(): Generator
-    {
-        
+    {  
         yield 'sample input' => [
             'input' => 'Time:      7  15   30
             Distance:  9  40  200',

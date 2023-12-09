@@ -13,7 +13,7 @@ final class Day07Test extends TestCase
     /**
      * @dataProvider provideInputPartOne
      */
-     public function testPartOne(string $input, int $expected): void
+    public function testPartOne(string $input, int $expected): void
     {
         $actual = (new Day07)->partOne($input);
     
@@ -22,7 +22,7 @@ final class Day07Test extends TestCase
 
     public static function provideInputPartOne(): Generator
     {
-         yield 'sample input' => [
+        yield 'sample input' => [
             'input' => '32T3K 765
             T55J5 684
             KK677 28

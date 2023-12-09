@@ -6,9 +6,6 @@ namespace aoc2023\Day06;
 
 final class Day06
 {
-    public array $seeds = [];
-    public array $maps = [];
-
     public function partOne(string $input): int
     {
         $raw = $this->getFirstTaskInput($input);
