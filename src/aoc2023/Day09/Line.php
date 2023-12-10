@@ -23,13 +23,12 @@ class Line {
     {
         $sequences[0] = $this->values;  
         $currentSequence = $this->values;
-        while (!$this->containsOnlyZeros($currentSequence)) {
+        while (!$this->allElementsAreEqual($currentSequence)) {
             $nextSequence = $this->getDiffs($currentSequence);
             $sequences[] = $nextSequence;
             $currentSequence = $nextSequence;
         }
-        array_pop($sequences);
-
+    
         return array_reverse($sequences);
     }
 
@@ -43,8 +42,8 @@ class Line {
         return $diffs;
     } 
 
-    protected function containsOnlyZeros(array $sequence): bool
+    protected function allElementsAreEqual(array $sequence): bool
     {
-        return $sequence[0] === 0 && count(array_count_values($sequence)) === 1;
+        return count(array_count_values($sequence)) === 1;
     }
 }
