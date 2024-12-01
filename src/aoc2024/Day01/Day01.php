@@ -30,6 +30,12 @@ final class Day01
         return $this->getTotalDistance();
     }
 
+    public function partTwo(): int
+    {
+        var_dump($this->rawList);
+        return 0;
+    }
+
     /**
      * @return string[]|bool
      */
@@ -44,7 +50,7 @@ final class Day01
         foreach ($this->locationIdsList_2 as $key => $locationId_2) {
             $totalDistance += abs($locationId_2 - $this->locationIdsList_1[$key]);
         }
-        
+
         return $totalDistance;
     }
 }
