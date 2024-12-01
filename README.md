@@ -5,6 +5,7 @@ Because this is what we do in December :)
 
 ## Table of contents
 
+* [aoc 2024](https://github.com/alexandrajulius/adventOfCode/tree/main/src/aoc2024)
 * [aoc 2023](https://github.com/alexandrajulius/adventOfCode/tree/main/src/aoc2023)
 * [aoc 2022](https://github.com/alexandrajulius/adventOfCode/tree/main/src/aoc2022)
 * [aoc 2021](https://github.com/alexandrajulius/adventOfCode/tree/main/src/aoc2021)
@@ -24,7 +25,7 @@ $ composer install
 ## How to test
 * [phpunit](https://phpunit.de/getting-started-with-phpunit.html)
 
-Run test suites in in root directory
+Run test suites in root directory
 ```
 $ vendor/bin/phpunit tests --testdox --colors
 ```
