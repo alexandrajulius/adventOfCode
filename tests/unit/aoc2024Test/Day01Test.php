@@ -13,7 +13,6 @@ final class Day01Test extends TestCase
     /**
      * @dataProvider provideInputPartOne
      */
-    /*
     public function testPartOne(string $input, int $expected): void
     {
         $actual = (new Day01($input))->partOne();
@@ -38,7 +37,7 @@ final class Day01Test extends TestCase
             'expected' => 1197984
         ];
     }
-*/
+
     /**
      * @dataProvider provideInputPartTwo
      */
@@ -60,12 +59,11 @@ final class Day01Test extends TestCase
 3   3',
             'expected' => 31
         ];
-/*
+
         yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2024/day01.txt'),
-            'expected' => 1197984
+            'expected' => 23387399
         ];
-*/
     }
 }
 

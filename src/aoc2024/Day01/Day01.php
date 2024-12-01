@@ -17,13 +17,8 @@ final class Day01
 
     public function partOne(): int
     {
-        foreach ($this->rawList as $elem) {
-            if ($elem !== '') {
-                $locationIds = explode('   ', $elem);
-                $this->locationIdsList_1[] = (int)$locationIds[0];
-                $this->locationIdsList_2[] = (int)$locationIds[1];
-            }
-        }
+        $this->createLocationIdsLists();
+
         sort($this->locationIdsList_1);
         sort($this->locationIdsList_2);
 
@@ -32,8 +27,9 @@ final class Day01
 
     public function partTwo(): int
     {
-        var_dump($this->rawList);
-        return 0;
+        $this->createLocationIdsLists();
+
+        return $this->getSimilarityScore();
     }
 
     /**
@@ -44,7 +40,18 @@ final class Day01
         return explode(PHP_EOL, $input);
     }
 
-    public function getTotalDistance(): int
+    private function createLocationIdsLists(): void
+    {
+        foreach ($this->rawList as $elem) {
+            if ($elem !== '') {
+                $locationIds = explode('   ', $elem);
+                $this->locationIdsList_1[] = (int)$locationIds[0];
+                $this->locationIdsList_2[] = (int)$locationIds[1];
+            }
+        }
+    }
+
+    private function getTotalDistance(): int
     {
         $totalDistance = 0;
         foreach ($this->locationIdsList_2 as $key => $locationId_2) {
@@ -52,5 +59,16 @@ final class Day01
         }
 
         return $totalDistance;
+    }
+
+    private function getSimilarityScore(): int
+    {
+        $similarityScore = 0;
+        foreach ($this->locationIdsList_1 as $locationId) {
+            $indexes = array_keys($this->locationIdsList_2, $locationId);
+            $similarityScore += count($indexes) * $locationId;
+        }
+
+        return $similarityScore;
     }
 }
