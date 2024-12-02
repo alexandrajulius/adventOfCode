@@ -37,7 +37,7 @@ final class Day02Test extends TestCase
             'expected' => 279
         ];
     }
-    
+
     /**
      * @dataProvider provideInputPartTwo
      */
@@ -59,12 +59,12 @@ final class Day02Test extends TestCase
 1 3 6 7 9',
             'expected' => 4
         ];
-/*
+
         yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2024/day02.txt'),
-            'expected' => 279
+            'expected' => 343
         ];
-*/
+
     }
 }
 

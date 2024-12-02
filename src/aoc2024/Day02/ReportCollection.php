@@ -6,6 +6,9 @@ namespace aoc2024\Day02;
 
 class ReportCollection
 {
+    /**
+     * @var Report[]
+     */
     public array $reports = [];
 
     /**
@@ -23,7 +26,7 @@ class ReportCollection
         return $reportCollection;
     }
 
-    public function getSaveReportsCountProblemDampened(): int
+    public function getSaveReportsCount(): int
     {
         $count = 0;
         foreach ($this->reports as $report) {
@@ -35,19 +38,14 @@ class ReportCollection
                 $count++;
             }
         }
-
         return $count;
     }
 
-    public function getSaveReportsCount(): int
+    public function getDampenedSaveReportsCount(): int
     {
         $count = 0;
         foreach ($this->reports as $report) {
-            if ($report->isSafelyIncreasing()) {
-                $count++;
-            }
-
-            if ($report->isSafelyDecreasing()) {
+            if ($report->isDampened()) {
                 $count++;
             }
         }

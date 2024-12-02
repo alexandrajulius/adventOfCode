@@ -17,7 +17,7 @@ final class Day02
     {
         $reportCollection = ReportCollection::from($this->toArray($input));
 
-        return $reportCollection->getSaveReportsCountProblemDampened();
+        return $reportCollection->getDampenedSaveReportsCount();
     }
 
     /**
