@@ -3,7 +3,7 @@
 
 Because this is what we do in December :)
 
-So we can enjoy humor based on our pain: [https://www.reddit.com/r/adventofcode/](https://www.reddit.com/r/adventofcode/)
+So we can enjoy humor based on our pain: [r/adventofcode/](https://www.reddit.com/r/adventofcode/)
 
 ## Table of contents
 

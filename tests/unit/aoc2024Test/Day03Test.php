@@ -15,7 +15,7 @@ final class Day03Test extends TestCase
      */
     public function testPartOne(string $input, int $expected): void
     {
-        $actual = (new Day03($input))->partOne();
+        $actual = (new Day03())->partOne($input);
 
         self::assertEquals($expected, $actual);
     }
@@ -23,20 +23,37 @@ final class Day03Test extends TestCase
     public static function provideInputPartOne(): Generator
     {
         yield 'sample input' => [
-            'input' => '7 6 4 2 1
-1 2 7 8 9
-9 7 6 2 1
-1 3 2 4 5
-8 6 4 4 1
-1 3 6 7 9',
-            'expected' => 2
+            'input' => 'xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))',
+            'expected' => 161
         ];
-/*
+
         yield 'final input' => [
             'input' => file_get_contents('./tests/fixtures/aoc2024/day03.txt'),
-            'expected' => 279
+            'expected' => 169021493
         ];
-*/
+    }
+
+    /**
+     * @dataProvider provideInputPartTwo
+     */
+    public function testPartTwo(string $input, int $expected): void
+    {
+        $actual = (new Day03())->partTwo($input);
+
+        self::assertEquals($expected, $actual);
+    }
+
+    public static function provideInputPartTwo(): Generator
+    {
+        yield 'sample input' => [
+            'input' => 'do()xmul(2,4)&mul[3,7]!^don\'t()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))',
+            'expected' => 48
+        ];
+
+        yield 'final input' => [
+            'input' => file_get_contents('./tests/fixtures/aoc2024/day03.txt'),
+            'expected' => 111762583
+        ];
     }
 }
 
